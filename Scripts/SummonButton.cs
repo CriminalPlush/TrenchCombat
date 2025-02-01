@@ -18,15 +18,16 @@ public class SummonButton : MonoBehaviour
     private Slider slider;
     [SerializeField]
     private TMP_Text priceText;
-    private Resources resources;
+    private PlayerResources resources;
     void Start()
     {
         unitInfo = unit.GetComponent<UnitInfo>();
         image.texture = unitInfo.icon;
+        cooldown = unitInfo.spawnCooldown;
         slider.maxValue = cooldown;
         slider.value = thisCooldown;
         priceText.text = Convert.ToString(unitInfo.price);
-        resources = FindObjectOfType<Resources>();
+        resources = FindObjectOfType<PlayerResources>();
     }
     void Update()
     {

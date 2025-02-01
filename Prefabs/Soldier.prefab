@@ -694,6 +694,8 @@ MonoBehaviour:
   isEnemy: 0
   HP: 10
   defence: 0
+  isTrenchBoosted: 0
+  isOfficerBoosted: 0
 --- !u!114 &-8176681515540126624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +750,7 @@ MonoBehaviour:
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 6563195237973904602}
+  damage: 0
   baseDamage: 1
 --- !u!54 &7630022390963633945
 Rigidbody:
@@ -5980,6 +5983,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 66038e97306925a479b6588657848edb, type: 2}
+    - target: {fileID: -779086602007609746, guid: 28beff027687d814284f223c6a5a7264, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 063bcab0133e80949b951111773f5a46, type: 2}
     - target: {fileID: 180053139347550964, guid: 28beff027687d814284f223c6a5a7264, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6020,6 +6027,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9438c4f506bfa554d905ad3691b4b519, type: 2}
+    - target: {fileID: 6387018382124011627, guid: 28beff027687d814284f223c6a5a7264, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 063bcab0133e80949b951111773f5a46, type: 2}
     - target: {fileID: 6960119242044221289, guid: 28beff027687d814284f223c6a5a7264, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6045,7 +6056,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 8d9d6a75a7bbd8b4880313327ec86350, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -1656570095216862583, guid: 28beff027687d814284f223c6a5a7264, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28beff027687d814284f223c6a5a7264, type: 3}

@@ -13,6 +13,7 @@ public class UnitAttack : MonoBehaviour
     [SerializeField]
     private ParticleSystem attackEffect;
     private Unit unit;
+    [SerializeField]
     private float damage;
     [SerializeField]
     private float baseDamage;
@@ -29,17 +30,7 @@ public class UnitAttack : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(gameObject.GetComponent<UnitMovement>() != null)
-        {
-            UnitMovement UM = gameObject.GetComponent<UnitMovement>();
-            if(UM.inTrench)
-            {
-                damage = baseDamage * 1.2f;
-            }
-            else{
-                damage = baseDamage;
-            }
-        }
+        damage = baseDamage * (unit.isTrenchBoosted ? 1.2f: 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
         if (attackTarget != null)
         {
             StartCoroutine(Attack(damage));

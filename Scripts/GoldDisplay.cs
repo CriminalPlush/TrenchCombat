@@ -7,11 +7,11 @@ using System;
 public class GoldDisplay : MonoBehaviour
 {
     public TMP_Text text;
-    private Resources res;
+    private PlayerResources res;
     
     void Start()
     {
-        res = FindObjectOfType<Resources>();
+        res = FindObjectOfType<PlayerResources>();
     }
 
     // Update is called once per frame
