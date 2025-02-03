@@ -5458,7 +5458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  HP: 20
+  HP: 25
   defence: 0.2
   isTrenchBoosted: 0
   isOfficerBoosted: 0
@@ -5512,12 +5512,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.1
+  attackCooldown: 0.08
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 5985961848057883907}
   damage: 0
-  baseDamage: 0.2
+  baseDamage: 0.3
 --- !u!54 &6341573072302157887
 Rigidbody:
   m_ObjectHideFlags: 0

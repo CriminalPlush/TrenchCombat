@@ -7,7 +7,7 @@ public class TrenchSlot : MonoBehaviour
     public GameObject unit;
     void Start()
     {
-        
+        unit = null;
     }
 
     // Update is called once per frame
