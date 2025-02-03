@@ -144,18 +144,18 @@ public class UnitMovement : MonoBehaviour
     {
         if (GetComponent<UnitAttack>() == null || GetComponent<UnitAttack>().attackTarget == null)
         {
-            if (agent.velocity.magnitude > 0 && agent.isStopped == false)
+            if (agent.velocity.magnitude == 0 || inTrench)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(agent.destination.x, transform.position.y, agent.destination.z) - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+                numbaboy = 2;
+            }
+            else if (agent.velocity.magnitude > 0 && agent.isStopped == false)
             {
                 Vector3 direction = agent.velocity;
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
                 numbaboy = 1;
-            }
-            else if (agent.velocity.magnitude == 0 || inTrench)
-            {
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(agent.destination.x, transform.position.y, agent.destination.z) - transform.position);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-                numbaboy = 2;
             }
         }
         else if (GetComponent<UnitAttack>().attackTarget != null)

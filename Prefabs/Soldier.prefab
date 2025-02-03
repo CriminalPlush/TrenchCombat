@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 30
-  spawnCooldown: 10
+  spawnCooldown: 5
   icon: {fileID: 2800000, guid: a728a0efe85c27f438f13765a6814d56, type: 3}
 --- !u!114 &5089601168865985203
 MonoBehaviour:
