@@ -3058,7 +3058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 100
-  cooldown: 2.5
+  cooldown: 2
   goldPerTick: 10
 --- !u!114 &974109621
 MonoBehaviour:
@@ -3072,8 +3072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af6a63167e6d5e48a81604f566df9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnCooldown: 2
-  maxSpawnCooldown: 10
+  minSpawnCooldown: 4
+  maxSpawnCooldown: 12
   minCommandCooldown: 5
   maxCommandCooldown: 25
   units:
