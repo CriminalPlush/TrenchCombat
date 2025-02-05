@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f652d6e9c0d03c4082c7c8e6ff74f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titles: soldier
+  title: soldier
   price: 30
   spawnCooldown: 5
   icon: {fileID: 2800000, guid: a728a0efe85c27f438f13765a6814d56, type: 3}

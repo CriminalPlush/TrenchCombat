@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitInfo : MonoBehaviour
 {
-    public string titles = "nothing";
+    public string title = "nothing";
     public int price = 0;
     public int spawnCooldown = 5;
     public Texture icon;
