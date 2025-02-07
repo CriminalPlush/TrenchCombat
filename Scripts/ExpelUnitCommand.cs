@@ -66,4 +66,14 @@ public class ExpelUnitCommand : MonoBehaviour
             }
         }
     }
+    public void Expel(UnitInfo unitInfo)
+    {
+        foreach (GameObject x in units)
+        {
+            if (x.GetComponent<UnitInfo>() != null && x.GetComponent<UnitInfo>().title == unitInfo.title)
+            {
+                x.GetComponent<UnitMovement>().Move();
+            }
+        }
+    }
 }
