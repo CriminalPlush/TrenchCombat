@@ -710,7 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: officer
   price: 90
-  spawnCooldown: 15
+  spawnCooldown: 12
   icon: {fileID: 2800000, guid: 9c2c472f16cc54a46ad136ad623d934d, type: 3}
 --- !u!114 &3582607864837806106
 MonoBehaviour:
@@ -753,6 +753,7 @@ MonoBehaviour:
   attackEffect: {fileID: 7282257401650749137}
   damage: 0
   baseDamage: 0.5
+  attackDistance: 10
 --- !u!54 &5954429745004465480
 Rigidbody:
   m_ObjectHideFlags: 0

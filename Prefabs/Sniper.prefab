@@ -134,8 +134,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071067, z: 0, w: 0.7071069}
   m_LocalPosition: {x: 0, y: -0.0000013113, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5004521859282774403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,7 +208,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.75
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2479374520574143520
 GameObject:
@@ -5786,7 +5786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: sniper
   price: 70
-  spawnCooldown: 15
+  spawnCooldown: 10
   icon: {fileID: 2800000, guid: 9edc3ab06419e5d49bc5244c7b13bebd, type: 3}
 --- !u!114 &5839227829900392050
 MonoBehaviour:
@@ -5829,6 +5829,7 @@ MonoBehaviour:
   attackEffect: {fileID: 5978932362356764261}
   damage: 0
   baseDamage: 4.5
+  attackDistance: 15
 --- !u!54 &557103748520830539
 Rigidbody:
   m_ObjectHideFlags: 0

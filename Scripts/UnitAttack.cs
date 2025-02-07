@@ -17,23 +17,34 @@ public class UnitAttack : MonoBehaviour
     private float damage;
     [SerializeField]
     private float baseDamage;
+    [SerializeField]
+    private float attackDistance;
     // Start is called before the first frame update
     void Start()
     {
         unit = gameObject.GetComponent<Unit>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     void FixedUpdate()
     {
-        damage = baseDamage * (unit.isTrenchBoosted ? 1.2f: 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
-        if (attackTarget != null)
+        damage = baseDamage * (unit.isTrenchBoosted ? 1.2f : 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
+        if (attackTarget != null && IsTargetInRange())
         {
             StartCoroutine(Attack(damage));
+            /*if (GetComponent<UnitMovement>() != null)
+            {
+                if (GetComponent<UnitMovement>().isMoving)
+                {
+                    GetComponent<UnitMovement>().Move();
+                }
+                else if (GetComponent<UnitMovement>().isRetreating)
+                {
+                    GetComponent<UnitMovement>().Retreat();
+                }
+            }*/
+        }
+        else if (GetComponent<UnitMovement>() != null && attackTarget != null)
+        {
+            GetComponent<UnitMovement>().agent.SetDestination(attackTarget.transform.position);
         }
     }
     void OnTriggerStay(Collider col)
@@ -62,7 +73,7 @@ public class UnitAttack : MonoBehaviour
             attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
             yield return new WaitForSeconds(attackCooldown);
             isAttacking = false;
-            if (attackTarget != null)
+            if (attackTarget != null && IsTargetInRange())
             {
                 StartCoroutine(Attack(damage));
             }
@@ -84,4 +95,23 @@ public class UnitAttack : MonoBehaviour
             }
         }
     }
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, attackDistance);
+    }
+    public bool IsTargetInRange()
+    {
+        if (attackTarget != null)
+        {
+            Debug.Log(Vector3.Distance(transform.position, attackTarget.transform.position));
+            return Vector3.Distance(transform.position, attackTarget.transform.position) < attackDistance;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071067, z: 0, w: 0.7071069}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.9, y: 1.7775, z: 7.9}
+  m_LocalScale: {x: 20, y: 4.5, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2492284310906153351}
@@ -5459,7 +5459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   HP: 25
-  defence: 0.2
+  defence: 0.15
   isTrenchBoosted: 0
   isOfficerBoosted: 0
 --- !u!114 &3156519805891204326
@@ -5476,7 +5476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: flamethrower
   price: 45
-  spawnCooldown: 10
+  spawnCooldown: 6
   icon: {fileID: 2800000, guid: 98d4d1b917812694bbdae7d881bfcdb6, type: 3}
 --- !u!114 &7190716092450931305
 MonoBehaviour:
@@ -5519,6 +5519,7 @@ MonoBehaviour:
   attackEffect: {fileID: 5985961848057883907}
   damage: 0
   baseDamage: 0.3
+  attackDistance: 5
 --- !u!54 &6341573072302157887
 Rigidbody:
   m_ObjectHideFlags: 0

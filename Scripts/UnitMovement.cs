@@ -11,8 +11,7 @@ public class UnitMovement : MonoBehaviour
     public bool inTrench = false;
     public List<string> commandQueue;
     private bool executeCommand = true;
-    [SerializeField]
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public Transform startPoint;
     public Transform endPoint;
     [SerializeField]
@@ -83,7 +82,7 @@ public class UnitMovement : MonoBehaviour
         if (executeCommand
         && commandQueue.Count > 0
         && !(agent.isOnOffMeshLink && !inTrench)
-        && !(GetComponent<UnitAttack>() != null && GetComponent<UnitAttack>().attackTarget != null)
+        && !(GetComponent<UnitAttack>() != null && GetComponent<UnitAttack>().attackTarget != null && GetComponent<UnitAttack>().IsTargetInRange())
         )//&& !isAttacking)
         {
             switch (commandQueue[0])
@@ -238,7 +237,10 @@ public class UnitMovement : MonoBehaviour
         }
         if ((col.tag == "Enemy" && !unit.isEnemy) || (col.tag == "Unit" && unit.isEnemy))
         {
+            if(gameObject.GetComponent<UnitAttack>() != null && gameObject.GetComponent<UnitAttack>().IsTargetInRange()){
+            Debug.Log(gameObject.name + "|||" + "Beware the beast in black");
             Stay();
+            }
         }
     }
 }
