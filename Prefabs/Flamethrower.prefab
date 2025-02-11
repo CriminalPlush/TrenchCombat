@@ -5432,7 +5432,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6043363312791449604}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.85
+  m_Radius: 0.51
   m_Speed: 3.5
   m_Acceleration: 1000
   avoidancePriority: 50
@@ -5458,8 +5458,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  HP: 25
-  defence: 0.15
+  HP: 20
+  defence: 0.1
   isTrenchBoosted: 0
   isOfficerBoosted: 0
 --- !u!114 &3156519805891204326

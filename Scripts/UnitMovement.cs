@@ -100,6 +100,7 @@ public class UnitMovement : MonoBehaviour
             commandQueue.RemoveAt(0);
         }
         FaceTarget();
+        
     }
     public void Move()
     {
@@ -135,8 +136,8 @@ public class UnitMovement : MonoBehaviour
     }
     public void Stay()
     {
-        if(agent.hasPath)
-        agent.isStopped = true;
+        if (agent.hasPath)
+            agent.isStopped = true;
     }
 
     void FaceTarget()
@@ -217,7 +218,7 @@ public class UnitMovement : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-        if (col.tag == "StopIfNoPath" /*&& !inTrench*/)
+        if (col.tag == "StopIfNoPath")
         {
             if (col.transform.parent.GetComponent<Trench>().HasAnyFreeSlot() == false)
             {
@@ -225,22 +226,49 @@ public class UnitMovement : MonoBehaviour
             }
             else
             {
-                if (isMoving)
+                if (isMoving && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1 ] != "Move")
                 {
                     commandQueue.Add("Move");
                 }
-                else if (isRetreating)
+                else if (isRetreating && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1 ] != "Retreat")
                 {
                     commandQueue.Add("Retreat");
                 }
             }
         }
-        if ((col.tag == "Enemy" && !unit.isEnemy) || (col.tag == "Unit" && unit.isEnemy))
+        /*if ((col.tag == "Enemy" && !unit.isEnemy) || (col.tag == "Unit" && unit.isEnemy))
         {
-            if(gameObject.GetComponent<UnitAttack>() != null && gameObject.GetComponent<UnitAttack>().IsTargetInRange()){
-            Debug.Log(gameObject.name + "|||" + "Beware the beast in black");
-            Stay();
+            if (gameObject.GetComponent<UnitAttack>() != null && gameObject.GetComponent<UnitAttack>().IsTargetInRange())
+            {
+                Debug.Log(gameObject.name + "|||" + "Beware the beast in black");
+                Stay();
             }
+        }*/
+    }
+    void OnDrawGizmosSelected()
+    {
+
+        var nav = GetComponent<NavMeshAgent>();
+        if (nav == null || nav.path == null)
+            return;
+
+        var line = this.GetComponent<LineRenderer>();
+        if (line == null)
+        {
+            line = this.gameObject.AddComponent<LineRenderer>();
+            line.material = new Material(Shader.Find("Sprites/Default")) { color = Color.yellow };
+            line.SetWidth(0.5f, 0.5f);
+            line.SetColors(Color.yellow, Color.yellow);
         }
+
+        var path = nav.path;
+
+        line.SetVertexCount(path.corners.Length);
+
+        for (int i = 0; i < path.corners.Length; i++)
+        {
+            line.SetPosition(i, path.corners[i]);
+        }
+
     }
 }

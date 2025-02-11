@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 8530599}
   - component: {fileID: 8530598}
   - component: {fileID: 8530602}
-  - component: {fileID: 8530603}
   m_Layer: 3
   m_Name: Cube (7)
   m_TagString: Unit
@@ -247,22 +246,6 @@ MonoBehaviour:
   defence: 0
   isTrenchBoosted: 0
   isOfficerBoosted: 0
---- !u!208 &8530603
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8530597}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &60861972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,7 +2185,6 @@ GameObject:
   - component: {fileID: 787769227}
   - component: {fileID: 787769226}
   - component: {fileID: 787769230}
-  - component: {fileID: 787769231}
   m_Layer: 3
   m_Name: Cube (16)
   m_TagString: Enemy
@@ -2314,22 +2296,6 @@ MonoBehaviour:
   defence: 0
   isTrenchBoosted: 0
   isOfficerBoosted: 0
---- !u!208 &787769231
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787769225}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &795795233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3153,7 +3119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e20fe4cc90a20844b7e2526d2512a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 100
+  gold: 200
   cooldown: 2
   goldPerTick: 10
 --- !u!114 &974109621
@@ -4653,91 +4619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1903630634}
---- !u!1001 &1975872357
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 61.462
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.17297947
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.70710635
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.70710725
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 861911508146765713, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725302378786835913, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725302378786835913, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725302378786835913, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4448360946778562911, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4448360946778562911, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5887243759018643228, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_Name
-      value: Soldier (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5887243759018643228, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058528157062466392, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
-      propertyPath: isEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 34fbbd93a6c979741959d7e7aec23db1, type: 3}
 --- !u!4 &2079606372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3566038563041779112, guid: cd828173d6faf2f46b40c5793235df5c, type: 3}
@@ -4808,8 +4689,8 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 55
-  m_UseGeometry: 1
+    m_Bits: 4294967295
+  m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -4819,7 +4700,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.096666664
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0279cc8769206b7479b2a2afdef2be7a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8db42bee8e1020e4dab0fdae641e6602, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &2114851741
 GameObject:
@@ -5133,7 +5014,6 @@ SceneRoots:
   - {fileID: 1816490310}
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1975872357}
   - {fileID: 2084367308}
   - {fileID: 787769229}
   - {fileID: 418792422}

@@ -29,22 +29,25 @@ public class UnitAttack : MonoBehaviour
         damage = baseDamage * (unit.isTrenchBoosted ? 1.2f : 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
         if (attackTarget != null && IsTargetInRange())
         {
+            Debug.Log("1");
             StartCoroutine(Attack(damage));
-            /*if (GetComponent<UnitMovement>() != null)
-            {
-                if (GetComponent<UnitMovement>().isMoving)
-                {
-                    GetComponent<UnitMovement>().Move();
-                }
-                else if (GetComponent<UnitMovement>().isRetreating)
-                {
-                    GetComponent<UnitMovement>().Retreat();
-                }
-            }*/
         }
         else if (GetComponent<UnitMovement>() != null && attackTarget != null)
         {
+            Debug.Log("2");
             GetComponent<UnitMovement>().agent.SetDestination(attackTarget.transform.position);
+        }
+        else if (GetComponent<UnitMovement>() != null)
+        {
+            UnitMovement UM = GetComponent<UnitMovement>();
+            if (UM.isMoving && UM.agent.isStopped && !UM.inTrench)
+            {
+                UM.Move();
+            }
+            else if (UM.isRetreating && UM.agent.isStopped && !UM.inTrench)
+            {
+                UM.Retreat();
+            }
         }
     }
     void OnTriggerStay(Collider col)
@@ -71,26 +74,32 @@ public class UnitAttack : MonoBehaviour
             isAttacking = true;
             attackEffect.Play();
             attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
-            yield return new WaitForSeconds(attackCooldown);
-            isAttacking = false;
             if (attackTarget != null && IsTargetInRange())
             {
+                if (GetComponent<UnitMovement>() != null)
+                {
+                    UnitMovement UM = GetComponent<UnitMovement>();
+                    UM.Stay();
+                }
+                yield return new WaitForSeconds(attackCooldown);
+                isAttacking = false;
                 StartCoroutine(Attack(damage));
             }
             else
             {
-                isAttacking = false;
-                if (gameObject.GetComponent<UnitMovement>() == true)
+                if (GetComponent<UnitMovement>() != null)
                 {
-                    UnitMovement UM = gameObject.GetComponent<UnitMovement>();
-                    if (UM.isMoving && !UM.inTrench)
+                    UnitMovement UM = GetComponent<UnitMovement>();
+                    if (UM.isMoving && attackTarget == null)
                     {
                         UM.Move();
                     }
-                    else if (UM.isRetreating)
+                    else if (UM.isRetreating && attackTarget == null)
                     {
                         UM.Retreat();
                     }
+                    yield return new WaitForSeconds(0);
+                    isAttacking = false;
                 }
             }
         }
@@ -105,7 +114,6 @@ public class UnitAttack : MonoBehaviour
     {
         if (attackTarget != null)
         {
-            Debug.Log(Vector3.Distance(transform.position, attackTarget.transform.position));
             return Vector3.Distance(transform.position, attackTarget.transform.position) < attackDistance;
         }
         else
