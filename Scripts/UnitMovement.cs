@@ -18,6 +18,10 @@ public class UnitMovement : MonoBehaviour
     public GameObject link;
     public bool isMoving = true;
     public bool isRetreating = false;
+    [SerializeField]
+    private UnitAttack UA = null;
+    [SerializeField]
+    private bool ignoreOffMeshLink = false;
 
     private Unit unit;
     private GameObject rangeCollider = null;
@@ -29,12 +33,14 @@ public class UnitMovement : MonoBehaviour
     private bool isOnOffShit;
     [SerializeField]
     private bool isImoveinImovout;
-    [SerializeField]
-    private int numbaboy;
 
     void Start()
     {
         unit = gameObject.GetComponent<Unit>();
+        if (UA == null)
+        {
+            UA = gameObject.GetComponent<UnitAttack>();
+        }
         startPoint = GameObject.FindGameObjectWithTag("StartPoint").transform;
         endPoint = GameObject.FindGameObjectWithTag("EndPoint").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -71,7 +77,7 @@ public class UnitMovement : MonoBehaviour
                 rangeCollider.transform.localScale = rangeBaseScale;
             }
         }
-        if (agent.isOnOffMeshLink && !inTrench)
+        if (agent.isOnOffMeshLink && !inTrench && !ignoreOffMeshLink)
         {
             if (commandQueue.Count > 0)
             {
@@ -82,7 +88,7 @@ public class UnitMovement : MonoBehaviour
         if (executeCommand
         && commandQueue.Count > 0
         && !(agent.isOnOffMeshLink && !inTrench)
-        && !(GetComponent<UnitAttack>() != null && GetComponent<UnitAttack>().attackTarget != null && GetComponent<UnitAttack>().IsTargetInRange())
+        && !(UA != null && UA.attackTarget != null && UA.IsTargetInRange())
         )//&& !isAttacking)
         {
             switch (commandQueue[0])
@@ -100,7 +106,7 @@ public class UnitMovement : MonoBehaviour
             commandQueue.RemoveAt(0);
         }
         FaceTarget();
-        
+
     }
     public void Move()
     {
@@ -142,28 +148,19 @@ public class UnitMovement : MonoBehaviour
 
     void FaceTarget()
     {
-        if (GetComponent<UnitAttack>() == null || GetComponent<UnitAttack>().attackTarget == null)
+        if (UA == null || UA.attackTarget == null)
         {
             if (agent.velocity.magnitude == 0 || inTrench)
             {
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(agent.destination.x, transform.position.y, agent.destination.z) - transform.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-                numbaboy = 2;
             }
             else if (agent.velocity.magnitude > 0 && agent.isStopped == false)
             {
                 Vector3 direction = agent.velocity;
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-                numbaboy = 1;
             }
-        }
-        else if (GetComponent<UnitAttack>().attackTarget != null)
-        {
-            Vector3 attackTargetPosition = GetComponent<UnitAttack>().attackTarget.transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(attackTargetPosition - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-            numbaboy = 4;
         }
     }
     void EnterOffMeshLink()
@@ -226,11 +223,11 @@ public class UnitMovement : MonoBehaviour
             }
             else
             {
-                if (isMoving && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1 ] != "Move")
+                if (isMoving && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1] != "Move")
                 {
                     commandQueue.Add("Move");
                 }
-                else if (isRetreating && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1 ] != "Retreat")
+                else if (isRetreating && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1] != "Retreat")
                 {
                     commandQueue.Add("Retreat");
                 }

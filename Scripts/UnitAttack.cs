@@ -12,6 +12,7 @@ public class UnitAttack : MonoBehaviour
     private bool isAttacking = false;
     [SerializeField]
     private ParticleSystem attackEffect;
+    [SerializeField]
     private Unit unit;
     [SerializeField]
     private float damage;
@@ -19,27 +20,43 @@ public class UnitAttack : MonoBehaviour
     private float baseDamage;
     [SerializeField]
     private float attackDistance;
+
+    [SerializeField]
+    private UnitMovement UM;
     // Start is called before the first frame update
     void Start()
     {
-        unit = gameObject.GetComponent<Unit>();
+        if (unit == null)
+        {
+            unit = gameObject.GetComponent<Unit>();
+        }
+        if(UM == null && gameObject.GetComponent<UnitMovement>() != null)
+        {
+            UM = gameObject.GetComponent<UnitMovement>();
+        }
     }
     void FixedUpdate()
     {
-        damage = baseDamage * (unit.isTrenchBoosted ? 1.2f : 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
+        if (unit != null)
+        {
+            damage = baseDamage * (unit.isTrenchBoosted ? 1.2f : 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
+        }
+        else
+        {
+            damage = baseDamage;
+        }
         if (attackTarget != null && IsTargetInRange())
         {
             Debug.Log("1");
             StartCoroutine(Attack(damage));
         }
-        else if (GetComponent<UnitMovement>() != null && attackTarget != null)
+        else if (UM != null && attackTarget != null)
         {
             Debug.Log("2");
-            GetComponent<UnitMovement>().agent.SetDestination(attackTarget.transform.position);
+            UM.agent.SetDestination(attackTarget.transform.position);
         }
-        else if (GetComponent<UnitMovement>() != null)
+        else if (UM != null)
         {
-            UnitMovement UM = GetComponent<UnitMovement>();
             if (UM.isMoving && UM.agent.isStopped && !UM.inTrench)
             {
                 UM.Move();
@@ -48,6 +65,12 @@ public class UnitAttack : MonoBehaviour
             {
                 UM.Retreat();
             }
+        }
+        if (attackTarget != null)
+        {
+            Vector3 attackTargetPosition = new Vector3 (attackTarget.transform.position.x,transform.position.y,attackTarget.transform.position.z);
+            Quaternion lookRotation = Quaternion.LookRotation(attackTargetPosition - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
         }
     }
     void OnTriggerStay(Collider col)
@@ -72,13 +95,15 @@ public class UnitAttack : MonoBehaviour
         if (!isAttacking && attackTarget != null)
         {
             isAttacking = true;
-            attackEffect.Play();
+            if (attackEffect != null)
+            {
+                attackEffect.Play();
+            }
             attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
             if (attackTarget != null && IsTargetInRange())
             {
-                if (GetComponent<UnitMovement>() != null)
+                if (UM!= null)
                 {
-                    UnitMovement UM = GetComponent<UnitMovement>();
                     UM.Stay();
                 }
                 yield return new WaitForSeconds(attackCooldown);
@@ -87,9 +112,8 @@ public class UnitAttack : MonoBehaviour
             }
             else
             {
-                if (GetComponent<UnitMovement>() != null)
+                if (UM != null)
                 {
-                    UnitMovement UM = GetComponent<UnitMovement>();
                     if (UM.isMoving && attackTarget == null)
                     {
                         UM.Move();
