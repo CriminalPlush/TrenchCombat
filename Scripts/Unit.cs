@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour
                 //defence = baseDefence;
             }
         }
-        defence = baseDefence + (isTrenchBoosted ? 0.1f : 0) + (isOfficerBoosted ? 0.1f : 0);
+        defence = baseDefence + (isTrenchBoosted ? 0.1f : 0) + (isOfficerBoosted ? 0.2f : 0);
         if (HP <= 0)
         {
             if (isEnemy && GetComponent<UnitInfo>() == true)
