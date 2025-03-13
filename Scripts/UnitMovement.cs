@@ -24,13 +24,11 @@ public class UnitMovement : MonoBehaviour
     private bool ignoreOffMeshLink = false;
 
     private Unit unit;
-    private GameObject rangeCollider = null;
-    private Vector3 rangeBaseScale;
 
 
     // DebugOnly
     [SerializeField]
-    private bool isOnOffShit;
+    private bool isOnOffLink;
     [SerializeField]
     private bool isImoveinImovout;
 
@@ -44,14 +42,6 @@ public class UnitMovement : MonoBehaviour
         startPoint = GameObject.FindGameObjectWithTag("StartPoint").transform;
         endPoint = GameObject.FindGameObjectWithTag("EndPoint").transform;
         agent = GetComponent<NavMeshAgent>();
-        foreach (Transform x in transform)
-        {
-            if (x.tag == "Range")
-            {
-                rangeCollider = x.gameObject;
-                rangeBaseScale = rangeCollider.transform.localScale;
-            }
-        }
         if (unit.isEnemy)
         {
             Transform x = endPoint;
@@ -64,19 +54,8 @@ public class UnitMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        isOnOffShit = agent.isOnOffMeshLink;
+        isOnOffLink = agent.isOnOffMeshLink;
         isImoveinImovout = agent.isStopped;
-        if (rangeCollider != null)
-        {
-            if (inTrench)
-            {
-                rangeCollider.transform.localScale = rangeBaseScale * 1.2f;
-            }
-            else
-            {
-                rangeCollider.transform.localScale = rangeBaseScale;
-            }
-        }
         if (agent.isOnOffMeshLink && !inTrench && !ignoreOffMeshLink)
         {
             if (commandQueue.Count > 0)
@@ -106,44 +85,57 @@ public class UnitMovement : MonoBehaviour
             commandQueue.RemoveAt(0);
         }
         FaceTarget();
+        if (UA != null && UA.attackTarget != null && UA.IsTargetInRange() && !isOnOffLink)
+        {
+            Stay();
+        }
 
     }
     public void Move()
     {
-        agent.isStopped = false;
-        isMoving = true;
-        isRetreating = false;
-        agent.ResetPath();
-        agent.destination = endPoint.position;
-        if (link != null)
+        if (!isOnOffLink || inTrench)
         {
-            link.GetComponents<NavMeshLink>()[0].enabled = true;
-            link.GetComponents<NavMeshLink>()[1].enabled = true;
-            link = null;
+            agent.isStopped = false;
+            isMoving = true;
+            isRetreating = false;
+            agent.ResetPath();
+            agent.destination = endPoint.position;
+            if (link != null)
+            {
+                link.GetComponents<NavMeshLink>()[0].enabled = true;
+                link.GetComponents<NavMeshLink>()[1].enabled = true;
+                link = null;
+            }
+            inTrench = false;
         }
-        inTrench = false;
         //agent.ResetPath();
     }
     public void Retreat()
     {
-        agent.isStopped = false;
-        isRetreating = true;
-        isMoving = false;
-        agent.ResetPath();
-        agent.destination = startPoint.position;
-        if (link != null)
+        if (!isOnOffLink || inTrench)
         {
-            link.GetComponents<NavMeshLink>()[0].enabled = true;
-            link.GetComponents<NavMeshLink>()[1].enabled = true;
-            link = null;
+            agent.isStopped = false;
+            isRetreating = true;
+            isMoving = false;
+            agent.ResetPath();
+            agent.destination = startPoint.position;
+            if (link != null)
+            {
+                link.GetComponents<NavMeshLink>()[0].enabled = true;
+                link.GetComponents<NavMeshLink>()[1].enabled = true;
+                link = null;
+            }
+            inTrench = false;
         }
-        inTrench = false;
         //agent.ResetPath();
     }
     public void Stay()
     {
-        if (agent.hasPath)
-            agent.isStopped = true;
+        if (!isOnOffLink || inTrench)
+        {
+            if (agent.hasPath)
+                agent.isStopped = true;
+        }
     }
 
     void FaceTarget()

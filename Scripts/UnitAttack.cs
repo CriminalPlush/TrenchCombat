@@ -20,23 +20,46 @@ public class UnitAttack : MonoBehaviour
     private float baseDamage;
     [SerializeField]
     private float attackDistance;
+    [SerializeField]
+    private float baseAttackDistance;
 
     [SerializeField]
     private UnitMovement UM;
-    // Start is called before the first frame update
+    [SerializeField]
+    private AudioSource[] attackSound;
+
+    [SerializeField]
+    private GameObject rangeCollider = null;
+    private Vector3 rangeBaseScale;
     void Start()
     {
+        attackDistance = baseAttackDistance;
+        rangeBaseScale = rangeCollider.transform.localScale;
         if (unit == null)
         {
             unit = gameObject.GetComponent<Unit>();
         }
-        if(UM == null && gameObject.GetComponent<UnitMovement>() != null)
+        if (UM == null && gameObject.GetComponent<UnitMovement>() != null)
         {
             UM = gameObject.GetComponent<UnitMovement>();
         }
     }
     void FixedUpdate()
     {
+        if (rangeCollider != null)
+        {
+            if (UM != null && UM.inTrench)
+            {
+                rangeCollider.transform.localScale = rangeBaseScale * 1.35f;
+                attackDistance = baseAttackDistance * 1.35f;
+                
+            }
+            else
+            {
+                rangeCollider.transform.localScale = rangeBaseScale;
+                attackDistance = baseAttackDistance;
+            }
+        }
         if (unit != null)
         {
             damage = baseDamage * (unit.isTrenchBoosted ? 1.2f : 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
@@ -68,7 +91,7 @@ public class UnitAttack : MonoBehaviour
         }
         if (attackTarget != null)
         {
-            Vector3 attackTargetPosition = new Vector3 (attackTarget.transform.position.x,transform.position.y,attackTarget.transform.position.z);
+            Vector3 attackTargetPosition = new Vector3(attackTarget.transform.position.x, transform.position.y, attackTarget.transform.position.z);
             Quaternion lookRotation = Quaternion.LookRotation(attackTargetPosition - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
         }
@@ -99,10 +122,14 @@ public class UnitAttack : MonoBehaviour
             {
                 attackEffect.Play();
             }
+            if (attackSound.Length != 0)
+            {
+                attackSound[Random.Range(0, attackSound.Length)].Play();
+            }
             attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
             if (attackTarget != null && IsTargetInRange())
             {
-                if (UM!= null)
+                if (UM != null)
                 {
                     UM.Stay();
                 }

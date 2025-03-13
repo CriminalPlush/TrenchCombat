@@ -712,7 +712,7 @@ MonoBehaviour:
   isRetreating: 0
   UA: {fileID: 0}
   ignoreOffMeshLink: 0
-  isOnOffShit: 0
+  isOnOffLink: 0
   isImoveinImovout: 0
 --- !u!114 &2117545147586714480
 MonoBehaviour:
@@ -734,7 +734,10 @@ MonoBehaviour:
   damage: 0
   baseDamage: 1
   attackDistance: 10
+  baseAttackDistance: 10
   UM: {fileID: 0}
+  attackSound: []
+  rangeCollider: {fileID: 4583208718315083330}
 --- !u!54 &7630022390963633945
 Rigidbody:
   m_ObjectHideFlags: 0
