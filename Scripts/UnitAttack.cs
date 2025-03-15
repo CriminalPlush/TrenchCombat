@@ -52,7 +52,7 @@ public class UnitAttack : MonoBehaviour
             {
                 rangeCollider.transform.localScale = rangeBaseScale * 1.35f;
                 attackDistance = baseAttackDistance * 1.35f;
-                
+
             }
             else
             {
@@ -70,12 +70,10 @@ public class UnitAttack : MonoBehaviour
         }
         if (attackTarget != null && IsTargetInRange())
         {
-            Debug.Log("1");
             StartCoroutine(Attack(damage));
         }
         else if (UM != null && attackTarget != null)
         {
-            Debug.Log("2");
             UM.agent.SetDestination(attackTarget.transform.position);
         }
         else if (UM != null)
@@ -95,6 +93,20 @@ public class UnitAttack : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(attackTargetPosition - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
         }
+        if(!isAttacking)
+        {
+            if (attackSound.Length != 0)
+            {
+                foreach (AudioSource sound in attackSound)
+                {
+                    if (sound.loop)
+                    {
+                   Debug.Log("fuck your moder");
+                        sound.Pause();
+                    }
+                }
+            }
+        }
     }
     void OnTriggerStay(Collider col)
     {
@@ -110,6 +122,7 @@ public class UnitAttack : MonoBehaviour
     {
         if (col.gameObject == attackTarget)
         {
+            Debug.Log("yekyekanoder");
             attackTarget = null;
         }
     }
@@ -124,7 +137,12 @@ public class UnitAttack : MonoBehaviour
             }
             if (attackSound.Length != 0)
             {
-                attackSound[Random.Range(0, attackSound.Length)].Play();
+                int x = Random.Range(0, attackSound.Length);
+                if (!(attackSound[x].loop && attackSound[x].isPlaying))
+                {
+                    attackSound[x].Play();
+                }
+
             }
             attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
             if (attackTarget != null && IsTargetInRange())
