@@ -101,7 +101,6 @@ public class UnitAttack : MonoBehaviour
                 {
                     if (sound.loop)
                     {
-                   Debug.Log("fuck your moder");
                         sound.Pause();
                     }
                 }
