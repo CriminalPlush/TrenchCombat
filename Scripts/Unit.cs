@@ -18,6 +18,9 @@ public class Unit : MonoBehaviour
     public float baseDefence { get; private set; }
     public bool isTrenchBoosted = false;
     public bool isOfficerBoosted = false;
+    public UnitMovement UM;
+    public UnitAttack UA;
+    private bool isDying = false;
     /* private bool isMoving = true;
      private bool isRetreating = false;*/
 
@@ -30,7 +33,7 @@ public class Unit : MonoBehaviour
     {
         if (gameObject.GetComponent<UnitMovement>() == true)
         {
-            UnitMovement UM = gameObject.GetComponent<UnitMovement>();
+            UM = gameObject.GetComponent<UnitMovement>();
             if (UM.inTrench)
             {
                 isTrenchBoosted = true;
@@ -45,23 +48,34 @@ public class Unit : MonoBehaviour
         defence = baseDefence + (isTrenchBoosted ? 0.1f : 0) + (isOfficerBoosted ? 0.2f : 0);
         if (HP <= 0)
         {
+            StartCoroutine(Die());
+        }
+    }
+    private IEnumerator Die()
+    {
+        if (!isDying)
+        {
+            isDying = true;
             if (isEnemy && GetComponent<UnitInfo>() == true)
             {
                 FindObjectOfType<PlayerResources>().gold += GetComponent<UnitInfo>().price / 2;
             }
-            if (GetComponent<UnitMovement>() == true && GetComponent<UnitMovement>().inTrench)
+            if (UM != null && UM.inTrench)
             {
-                GetComponent<UnitMovement>().link.GetComponents<NavMeshLink>()[0].enabled = true;
-                GetComponent<UnitMovement>().link.GetComponents<NavMeshLink>()[1].enabled = true;
-                GetComponent<UnitMovement>().link.GetComponent<TrenchSlot>().unit = null;
+                UM.link.GetComponents<NavMeshLink>()[0].enabled = true;
+                UM.link.GetComponents<NavMeshLink>()[1].enabled = true;
+                UM.link.GetComponent<TrenchSlot>().unit = null;
             }
-            if(GetComponent<UnitBoost>() == true)
+            if (GetComponent<UnitBoost>() == true)
             {
-                foreach(Unit x in GetComponent<UnitBoost>().unitsBoosted)
+                foreach (Unit x in GetComponent<UnitBoost>().unitsBoosted)
                 {
                     x.isOfficerBoosted = false;
                 }
             }
+            UM.enabled = false;
+            UA.enabled = false;
+            yield return new WaitForSeconds(5.4f); //Time befo dessapearing ♂
             Destroy(gameObject);
         }
     }

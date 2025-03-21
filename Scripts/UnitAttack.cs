@@ -23,7 +23,6 @@ public class UnitAttack : MonoBehaviour
     [SerializeField]
     private float baseAttackDistance;
 
-    [SerializeField]
     private UnitMovement UM;
     [SerializeField]
     private AudioSource[] attackSound;
@@ -39,10 +38,7 @@ public class UnitAttack : MonoBehaviour
         {
             unit = gameObject.GetComponent<Unit>();
         }
-        if (UM == null && gameObject.GetComponent<UnitMovement>() != null)
-        {
-            UM = gameObject.GetComponent<UnitMovement>();
-        }
+        UM = unit.UM;
     }
     void FixedUpdate()
     {
@@ -93,7 +89,7 @@ public class UnitAttack : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(attackTargetPosition - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
         }
-        if(!isAttacking)
+        if (!isAttacking)
         {
             if (attackSound.Length != 0)
             {
@@ -109,11 +105,17 @@ public class UnitAttack : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-        if ((col.tag == "Enemy" && !unit.isEnemy) || (col.tag == "Unit" && unit.isEnemy))
+        Debug.Log(gameObject.name + " === " + col.name);
+        Unit other = col.GetComponent<Unit>();
+        if (col.GetComponent<Unit>() != null)
         {
-            if (attackTarget == null)
+            other = col.GetComponent<Unit>();
+            if ((other.isEnemy && !unit.isEnemy) || (!other.isEnemy && unit.isEnemy))
             {
-                attackTarget = col.gameObject;
+                if (attackTarget == null)
+                {
+                    attackTarget = col.gameObject;
+                }
             }
         }
     }
@@ -121,13 +123,12 @@ public class UnitAttack : MonoBehaviour
     {
         if (col.gameObject == attackTarget)
         {
-            Debug.Log("yekyekanoder");
             attackTarget = null;
         }
     }
     private IEnumerator Attack(float damage)
     {
-        if (!isAttacking && attackTarget != null)
+        if (!isAttacking && attackTarget != null && attackTarget.GetComponent<Unit>().HP > 0 )
         {
             isAttacking = true;
             if (attackEffect != null)
@@ -176,7 +177,7 @@ public class UnitAttack : MonoBehaviour
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, attackDistance);
+        Gizmos.DrawSphere(transform.position, baseAttackDistance);
     }
     public bool IsTargetInRange()
     {

@@ -18,7 +18,6 @@ public class UnitMovement : MonoBehaviour
     public GameObject link;
     public bool isMoving = true;
     public bool isRetreating = false;
-    [SerializeField]
     private UnitAttack UA = null;
     [SerializeField]
     private bool ignoreOffMeshLink = false;
@@ -33,12 +32,10 @@ public class UnitMovement : MonoBehaviour
     private bool isImoveinImovout;
 
     void Start()
+
     {
         unit = gameObject.GetComponent<Unit>();
-        if (UA == null)
-        {
-            UA = gameObject.GetComponent<UnitAttack>();
-        }
+        UA = unit.UA;
         startPoint = GameObject.FindGameObjectWithTag("StartPoint").transform;
         endPoint = GameObject.FindGameObjectWithTag("EndPoint").transform;
         agent = GetComponent<NavMeshAgent>();

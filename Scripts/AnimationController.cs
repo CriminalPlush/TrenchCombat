@@ -10,32 +10,43 @@ public class AnimationController : MonoBehaviour
     [SerializeField]
     private NavMeshAgent agent;
     [SerializeField]
+    private Unit unit;
     private UnitAttack UA;
+    private bool unitIsDyeing = false;
     void Start()
     {
-
+        UA = unit.UA;
     }
 
     // Update is called once per frame
     void Update()
     {
-       // string clipName = animator.GetCurrentAnimatorStateInfo(0).IsName("Fire");
-        if (UA.attackTarget != null && UA.IsTargetInRange())
+        // string clipName = animator.GetCurrentAnimatorStateInfo(0).IsName("Fire");
+        if (!unitIsDyeing)
         {
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
-            { 
-                animator.Play("Fire");
+            if (unit.HP < 0)
+            {
+                unitIsDyeing = true;
+                animator.Play("Death");
             }
-        }
-        else if (agent.isStopped)
-        {
-            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")){
-            animator.Play("Idle");
+            else if (UA.attackTarget != null && UA.IsTargetInRange())
+            {
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
+                {
+                    animator.Play("Fire");
+                }
             }
-        }
-        else if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-        {
-            animator.Play("Walk");
+            else if (agent.isStopped)
+            {
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                {
+                    animator.Play("Idle");
+                }
+            }
+            else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+            {
+                animator.Play("Walk");
+            }
         }
     }
 }
