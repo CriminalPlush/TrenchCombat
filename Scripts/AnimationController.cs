@@ -24,7 +24,7 @@ public class AnimationController : MonoBehaviour
         // string clipName = animator.GetCurrentAnimatorStateInfo(0).IsName("Fire");
         if (!unitIsDyeing)
         {
-            if (unit.HP < 0)
+            if (unit.HP <= 0)
             {
                 unitIsDyeing = true;
                 animator.Play("Death");

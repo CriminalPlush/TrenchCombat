@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Linq;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
 
@@ -20,7 +20,8 @@ public class Unit : MonoBehaviour
     public bool isOfficerBoosted = false;
     public UnitMovement UM;
     public UnitAttack UA;
-    private bool isDying = false;
+    public UnitBoost UB;
+    public bool isDying = false;
     /* private bool isMoving = true;
      private bool isRetreating = false;*/
 
@@ -73,8 +74,18 @@ public class Unit : MonoBehaviour
                     x.isOfficerBoosted = false;
                 }
             }
-            UM.enabled = false;
-            UA.enabled = false;
+            if(UM != null)UM.enabled = false;
+            if(UA != null)UA.enabled = false;
+            if(UB != null)UB.enabled = false;
+            if(UA != null && UA.attackEffect != null)
+            {
+                UA.attackEffect.Stop();
+            }
+            foreach(Transform x in transform)
+            {
+                if(x.GetComponent<AudioSource>() != null) x.GetComponent<AudioSource>().Stop();
+                if(x.GetComponent<Canvas>() != null) x.gameObject.SetActive(false);
+            }
             yield return new WaitForSeconds(5.4f); //Time befo dessapearing ♂
             Destroy(gameObject);
         }

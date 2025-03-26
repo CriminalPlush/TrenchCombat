@@ -10,8 +10,8 @@ public class UnitAttack : MonoBehaviour
     public GameObject attackTarget;
     [SerializeField]
     private bool isAttacking = false;
-    [SerializeField]
-    private ParticleSystem attackEffect;
+   // [SerializeField]
+    public ParticleSystem attackEffect;
     [SerializeField]
     private Unit unit;
     [SerializeField]
@@ -107,7 +107,7 @@ public class UnitAttack : MonoBehaviour
     {
         Debug.Log(gameObject.name + " === " + col.name);
         Unit other = col.GetComponent<Unit>();
-        if (col.GetComponent<Unit>() != null)
+        if (col.GetComponent<Unit>() != null && col.GetComponent<Unit>().isDying == false)
         {
             other = col.GetComponent<Unit>();
             if ((other.isEnemy && !unit.isEnemy) || (!other.isEnemy && unit.isEnemy))
@@ -128,7 +128,7 @@ public class UnitAttack : MonoBehaviour
     }
     private IEnumerator Attack(float damage)
     {
-        if (!isAttacking && attackTarget != null && attackTarget.GetComponent<Unit>().HP > 0 )
+        if (!isAttacking && attackTarget != null && enabled)
         {
             isAttacking = true;
             if (attackEffect != null)
@@ -145,7 +145,7 @@ public class UnitAttack : MonoBehaviour
 
             }
             attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
-            if (attackTarget != null && IsTargetInRange())
+            if (attackTarget != null && IsTargetInRange() && attackTarget.GetComponent<Unit>().HP > 0)
             {
                 if (UM != null)
                 {
@@ -166,6 +166,10 @@ public class UnitAttack : MonoBehaviour
                     else if (UM.isRetreating && attackTarget == null)
                     {
                         UM.Retreat();
+                    }
+                    if(attackTarget.GetComponent<Unit>().HP <= 0)
+                    {
+                        attackTarget = null;
                     }
                     yield return new WaitForSeconds(0);
                     isAttacking = false;
