@@ -74,7 +74,11 @@ public class Unit : MonoBehaviour
                     x.isOfficerBoosted = false;
                 }
             }
-            if(UM != null)UM.enabled = false;
+            if(UM != null)
+            {
+                UM.enabled = false;
+                UM.agent.isStopped = true;
+            }
             if(UA != null)UA.enabled = false;
             if(UB != null)UB.enabled = false;
             if(UA != null && UA.attackEffect != null)
