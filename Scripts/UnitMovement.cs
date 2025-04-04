@@ -104,8 +104,8 @@ public class UnitMovement : MonoBehaviour
                 link = null;
             }
             inTrench = false;
+           // agent.ResetPath();
         }
-        //agent.ResetPath();
     }
     public void Retreat()
     {
@@ -123,8 +123,8 @@ public class UnitMovement : MonoBehaviour
                 link = null;
             }
             inTrench = false;
+           // agent.ResetPath();
         }
-        //agent.ResetPath();
     }
     public void Stay()
     {
