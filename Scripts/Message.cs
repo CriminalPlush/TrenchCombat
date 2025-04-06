@@ -8,4 +8,5 @@ public class Message
 {
     public Messenger messenger;
     public string message;
+    public bool isInterrupted = false;
 }

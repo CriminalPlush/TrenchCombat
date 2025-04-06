@@ -18,6 +18,8 @@ public class DialogManager : MonoBehaviour
     private RawImage imgComponent;
     [SerializeField]
     private float typeWriteSpeed = 0.05f;
+    [SerializeField]
+    private AudioSource clickSound;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class DialogManager : MonoBehaviour
         if (index + 1 < messages.Length)
         {
             index++;
+            clickSound.Play();
         }
         else
         {
@@ -45,6 +48,7 @@ public class DialogManager : MonoBehaviour
         if (index > 0)
         {
             index--;
+            clickSound.Play();
         }
         UpdateInfo();
     }
@@ -61,6 +65,7 @@ public class DialogManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(typeWriteSpeed);
         Debug.Log("Sgema");
         if(messageComponent.maxVisibleCharacters < messages[index].message.Length) messageComponent.maxVisibleCharacters++;
+        else if(messages[index].isInterrupted) Next();
         StartCoroutine(TypeWrite());
     }
 }
