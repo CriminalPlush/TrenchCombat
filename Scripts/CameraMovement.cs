@@ -46,7 +46,7 @@ public class CameraMovement : MonoBehaviour
                     //Determine if the touch is a moving touch
                     case TouchPhase.Moved:
                         // Determine direction by comparing the current touch position with the initial one
-                        transform.position = new Vector3(transform.position.x + swipeSpeed * (touch.position - startPos* -1).x, transform.position.y, transform.position.z);
+                        transform.position = new Vector3(transform.position.x + swipeSpeed * (touch.position - startPos).x, transform.position.y, transform.position.z);
                         if(transform.position.x < limitationLeft) transform.position = new Vector3(limitationLeft,transform.position.y,transform.position.z);
                         if(transform.position.x > limitationRight) transform.position = new Vector3(limitationRight,transform.position.y,transform.position.z);
                         break;

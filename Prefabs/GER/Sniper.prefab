@@ -6549,6 +6549,8 @@ MonoBehaviour:
   isOfficerBoosted: 0
   UM: {fileID: 5839227829900392050}
   UA: {fileID: 2766066047029988555}
+  UB: {fileID: 0}
+  isDying: 0
 --- !u!114 &2059588964112837769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6563,7 +6565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: sniper
   price: 70
-  spawnCooldown: 10
+  spawnCooldown: 12
   icon: {fileID: 2800000, guid: 9edc3ab06419e5d49bc5244c7b13bebd, type: 3}
 --- !u!114 &5839227829900392050
 MonoBehaviour:

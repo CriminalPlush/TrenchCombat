@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 6870326639285270501}
   unit: {fileID: 4815283610074663364}
   damage: 1
-  baseDamage: 2.5
+  baseDamage: 0.75
   attackDistance: 9.03
   baseAttackDistance: 9
   attackSound:
@@ -10824,12 +10824,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  HP: 80
+  HP: 40
   defence: 0.1
   isTrenchBoosted: 0
   isOfficerBoosted: 0
   UM: {fileID: 5087734671320864665}
   UA: {fileID: 5378420440940199014}
+  UB: {fileID: 0}
+  isDying: 0
 --- !u!114 &5087734671320864665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11498,13 +11500,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 6970527253392002079}
   unit: {fileID: 4815283610074663364}
   damage: 1
-  baseDamage: 2.5
+  baseDamage: 0.75
   attackDistance: 9.03
   baseAttackDistance: 9
   attackSound:

@@ -12,25 +12,25 @@ public class UnitBoost : MonoBehaviour
     }
     void FixedUpdate()
     {
-        foreach(var x in unitsBoosted)
+        foreach (var x in unitsBoosted)
         {
-            StartCoroutine(x.OfficerBoost(0.1f,this));
+            StartCoroutine(x.OfficerBoost(0.1f, this));
         }
     }
 
     // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
-        if ((col.tag == "Enemy" && unit.isEnemy) || (col.tag == "Unit" && !unit.isEnemy))
+        if ((col.GetComponent<Unit>() != null && !col.GetComponent<Unit>().isEnemy && unit.isEnemy) || (col.GetComponent<Unit>() != null && col.GetComponent<Unit>().isEnemy && !unit.isEnemy))
         {
             unitsBoosted.Add(col.GetComponent<Unit>());
         }
     }
     void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.GetComponent<Unit>() != null)
+        if (col.gameObject.GetComponent<Unit>() != null)
         {
-            if(unitsBoosted.Contains(col.gameObject.GetComponent<Unit>()))
+            if (unitsBoosted.Contains(col.gameObject.GetComponent<Unit>()))
             {
                 unitsBoosted.Remove(col.gameObject.GetComponent<Unit>());
             }

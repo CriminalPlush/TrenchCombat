@@ -957,13 +957,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 1253220172451653104}
   unit: {fileID: 928594019205253287}
-  damage: 5
-  baseDamage: 5
+  damage: 1.5
+  baseDamage: 1.5
   attackDistance: 10
   baseAttackDistance: 10
   attackSound:
@@ -6307,6 +6307,7 @@ MonoBehaviour:
   isOfficerBoosted: 0
   UM: {fileID: 7185039537071622655}
   UA: {fileID: 8812754456872657961}
+  UB: {fileID: 0}
   isDying: 0
 --- !u!114 &7185039537071622655
 MonoBehaviour:

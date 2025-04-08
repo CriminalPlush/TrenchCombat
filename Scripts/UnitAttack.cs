@@ -131,6 +131,7 @@ public class UnitAttack : MonoBehaviour
         if (!isAttacking && attackTarget != null && enabled)
         {
             isAttacking = true;
+            yield return new WaitForSeconds(attackCooldown);
             if (attackEffect != null)
             {
                 attackEffect.Play();
@@ -151,7 +152,6 @@ public class UnitAttack : MonoBehaviour
                 {
                     UM.Stay();
                 }
-                yield return new WaitForSeconds(attackCooldown);
                 isAttacking = false;
                 StartCoroutine(Attack(damage));
             }
