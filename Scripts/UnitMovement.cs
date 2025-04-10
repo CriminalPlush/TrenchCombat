@@ -96,7 +96,7 @@ public class UnitMovement : MonoBehaviour
             isMoving = true;
             isRetreating = false;
             agent.ResetPath();
-            agent.destination = endPoint.position;
+            agent.SetDestination(endPoint.position);
             if (link != null)
             {
                 link.GetComponents<NavMeshLink>()[0].enabled = true;

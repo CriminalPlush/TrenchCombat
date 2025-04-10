@@ -105,7 +105,7 @@ public class UnitAttack : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-        Debug.Log(gameObject.name + " === " + col.name);
+       // Debug.Log(gameObject.name + " === " + col.name);
         Unit other = col.GetComponent<Unit>();
         if (col.GetComponent<Unit>() != null && col.GetComponent<Unit>().isDying == false)
         {

@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -3362,7 +3362,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -3382,7 +3382,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -3524,7 +3524,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -3544,7 +3544,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -4709,7 +4709,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -4729,7 +4729,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -5477,7 +5477,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -5497,7 +5497,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -5639,7 +5639,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -5659,7 +5659,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -5978,7 +5978,7 @@ MonoBehaviour:
   m_StartPoint: {x: -1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -5998,7 +5998,7 @@ MonoBehaviour:
   m_StartPoint: {x: 1.4, y: 0.8, z: 0}
   m_EndPoint: {x: 0, y: 0, z: 0}
   m_Width: 0
-  m_CostModifier: -1000
+  m_CostModifier: -10000
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 0
@@ -6338,7 +6338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6464032773676355, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 495628263540155320, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_Enabled
@@ -6346,11 +6346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 595870172380121447, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 1262636405211475489, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 2616574550348452152, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6366,7 +6366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551492021899316224, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 3917133438522203865, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6414,7 +6414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649580943957190734, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 5052227753776694925, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6422,7 +6422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5186745987068029236, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 5298963119180532618, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_Enabled
@@ -6434,7 +6434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6369331806135476165, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 6753095906692508400, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6446,23 +6446,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351252543438234598, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 7433902940227249285, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 7566495808891251688, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 7646856741016627131, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 7781550942444260204, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_CostModifier
-      value: -1000
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 8471366119104803305, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_LocalPosition.z
