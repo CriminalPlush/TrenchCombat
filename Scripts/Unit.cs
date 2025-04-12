@@ -63,8 +63,11 @@ public class Unit : MonoBehaviour
             }
             if (UM != null && UM.inTrench)
             {
-                UM.link.GetComponents<NavMeshLink>()[0].enabled = true;
-                UM.link.GetComponents<NavMeshLink>()[1].enabled = true;
+                if (UM.link.GetComponents<NavMeshLink>().Length == 2)
+                {
+                    UM.link.GetComponents<NavMeshLink>()[0].enabled = true;
+                    UM.link.GetComponents<NavMeshLink>()[1].enabled = true;
+                }
                 UM.link.GetComponent<TrenchSlot>().unit = null;
             }
             if (GetComponent<UnitBoost>() == true)
@@ -74,21 +77,21 @@ public class Unit : MonoBehaviour
                     x.isOfficerBoosted = false;
                 }
             }
-            if(UM != null)
+            if (UM != null)
             {
                 UM.enabled = false;
                 UM.agent.isStopped = true;
             }
-            if(UA != null)UA.enabled = false;
-            if(UB != null)UB.enabled = false;
-            if(UA != null && UA.attackEffect != null)
+            if (UA != null) UA.enabled = false;
+            if (UB != null) UB.enabled = false;
+            if (UA != null && UA.attackEffect != null)
             {
                 UA.attackEffect.Stop();
             }
-            foreach(Transform x in transform)
+            foreach (Transform x in transform)
             {
-                if(x.GetComponent<AudioSource>() != null) x.GetComponent<AudioSource>().Stop();
-                if(x.GetComponent<Canvas>() != null) x.gameObject.SetActive(false);
+                if (x.GetComponent<AudioSource>() != null) x.GetComponent<AudioSource>().Stop();
+                if (x.GetComponent<Canvas>() != null) x.gameObject.SetActive(false);
             }
             yield return new WaitForSeconds(5.4f); //Time befo dessapearing ♂
             Destroy(gameObject);

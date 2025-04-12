@@ -6,11 +6,13 @@ using UnityEngine;
 public class UnitAttack : MonoBehaviour
 {
     [SerializeField]
-    private float attackCooldown;
+    private float preAttackCooldown;
+    [SerializeField]
+    private float postAttackCooldown;
     public GameObject attackTarget;
     [SerializeField]
     private bool isAttacking = false;
-   // [SerializeField]
+    // [SerializeField]
     public ParticleSystem attackEffect;
     [SerializeField]
     private Unit unit;
@@ -105,7 +107,7 @@ public class UnitAttack : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-       // Debug.Log(gameObject.name + " === " + col.name);
+        // Debug.Log(gameObject.name + " === " + col.name);
         Unit other = col.GetComponent<Unit>();
         if (col.GetComponent<Unit>() != null && col.GetComponent<Unit>().isDying == false)
         {
@@ -131,7 +133,7 @@ public class UnitAttack : MonoBehaviour
         if (!isAttacking && attackTarget != null && enabled)
         {
             isAttacking = true;
-            yield return new WaitForSeconds(attackCooldown);
+            yield return new WaitForSeconds(preAttackCooldown);
             if (attackEffect != null)
             {
                 attackEffect.Play();
@@ -152,6 +154,7 @@ public class UnitAttack : MonoBehaviour
                 {
                     UM.Stay();
                 }
+                yield return new WaitForSeconds(postAttackCooldown);
                 isAttacking = false;
                 StartCoroutine(Attack(damage));
             }
@@ -167,7 +170,7 @@ public class UnitAttack : MonoBehaviour
                     {
                         UM.Retreat();
                     }
-                    if(attackTarget.GetComponent<Unit>().HP <= 0)
+                    if (attackTarget.GetComponent<Unit>().HP <= 0)
                     {
                         attackTarget = null;
                     }

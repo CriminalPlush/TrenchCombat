@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.5
+  preAttackCooldown: 0.25
+  postAttackCooldown: 0.25
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 6870326639285270501}
@@ -11500,7 +11501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.5
+  preAttackCooldown: 0.25
+  postAttackCooldown: 0.25
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 6970527253392002079}

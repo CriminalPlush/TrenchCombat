@@ -5572,6 +5572,8 @@ MonoBehaviour:
   isOfficerBoosted: 0
   UM: {fileID: 7190716092450931305}
   UA: {fileID: 8763193860207502291}
+  UB: {fileID: 0}
+  isDying: 0
 --- !u!114 &3156519805891204326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5623,7 +5625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.08
+  preAttackCooldown: 0.04
+  postAttackCooldown: 0.04
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 5985961848057883907}

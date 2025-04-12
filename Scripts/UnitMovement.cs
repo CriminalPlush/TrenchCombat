@@ -99,12 +99,15 @@ public class UnitMovement : MonoBehaviour
             agent.SetDestination(endPoint.position);
             if (link != null)
             {
-                link.GetComponents<NavMeshLink>()[0].enabled = true;
-                link.GetComponents<NavMeshLink>()[1].enabled = true;
-                link = null;
+                if (link.GetComponents<NavMeshLink>().Length == 2)
+                {
+                    link.GetComponents<NavMeshLink>()[0].enabled = true;
+                    link.GetComponents<NavMeshLink>()[1].enabled = true;
+                    link = null;
+                }
             }
             inTrench = false;
-           // agent.ResetPath();
+            // agent.ResetPath();
         }
     }
     public void Retreat()
@@ -118,12 +121,15 @@ public class UnitMovement : MonoBehaviour
             agent.destination = startPoint.position;
             if (link != null)
             {
-                link.GetComponents<NavMeshLink>()[0].enabled = true;
-                link.GetComponents<NavMeshLink>()[1].enabled = true;
-                link = null;
+                if (link.GetComponents<NavMeshLink>().Length == 2)
+                {
+                    link.GetComponents<NavMeshLink>()[0].enabled = true;
+                    link.GetComponents<NavMeshLink>()[1].enabled = true;
+                    link = null;
+                }
             }
             inTrench = false;
-           // agent.ResetPath();
+            // agent.ResetPath();
         }
     }
     public void Stay()
@@ -172,14 +178,23 @@ public class UnitMovement : MonoBehaviour
     {
         if (col.tag == "Trench")
         {
-            if (col.transform.parent.GetComponent<TrenchSlot>().unit == gameObject)
+            TrenchSlot slot = col.transform.parent.GetComponent<TrenchSlot>();
+            if (slot.unit == gameObject && (!(slot.enemyOnly && !unit.isEnemy)) && (!(slot.playerOnly && unit.isEnemy)))
             {
+                Debug.Log("Checkit checkit");
                 inTrench = true;
                 //agent.ResetPath();
                 gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                 link = col.transform.parent.gameObject;
-                link.GetComponents<NavMeshLink>()[0].enabled = false;
-                link.GetComponents<NavMeshLink>()[1].enabled = false;
+                if(slot.obstacle != null)
+                {
+                    slot.obstacle.SetActive(true);
+                }
+                if (link.GetComponents<NavMeshLink>().Length > 0)
+                {
+                    link.GetComponents<NavMeshLink>()[0].enabled = false;
+                    if (link.GetComponents<NavMeshLink>().Length > 1) link.GetComponents<NavMeshLink>()[1].enabled = false;
+                }
                 if (col.transform.parent.parent.GetComponent<Trench>().lockedIn == false && !unit.isEnemy)
                 {
                     if (isMoving)

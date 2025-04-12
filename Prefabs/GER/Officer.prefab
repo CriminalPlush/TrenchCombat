@@ -1121,7 +1121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d98baad4dc6f47bbcb9b2630aa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2
+  preAttackCooldown: 0.5
+  postAttackCooldown: 0.5
   attackTarget: {fileID: 0}
   isAttacking: 0
   attackEffect: {fileID: 7282257401650749137}
