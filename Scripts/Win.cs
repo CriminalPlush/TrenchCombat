@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Win : MonoBehaviour
 {
@@ -8,18 +9,39 @@ public class Win : MonoBehaviour
     private Unit unit;
     [SerializeField]
     private GameObject winPanel;
+    [SerializeField]
+    private AudioMixerGroup SFX;
+    private bool hasWon = false;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(unit.HP <= 0)
+        if (unit.HP <= 0)
         {
-            Time.timeScale = Mathf.MoveTowards(Time.timeScale, 0, 1f * Time.deltaTime);
+            //Mathf.MoveTowards(Time.timeScale, 0, 1f * Time.deltaTime);
+            //winPanel.SetActive(true);
+            Victory();
+        }
+    }
+    private void Victory()
+    {
+        if (!hasWon)
+        {
+            hasWon = true;
+            AudioSource[] audioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+            foreach (AudioSource audioSource in audioSources)
+            {
+                if (audioSource.outputAudioMixerGroup == SFX)
+                {
+                    audioSource.Stop();
+                }
+            }
             winPanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }
