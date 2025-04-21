@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerResources : MonoBehaviour
 {
-    public int gold = 0;
     [SerializeField]
-    private float cooldown = 0.5f;
-    [SerializeField]
-    private int goldPerTick = 5;
+    private DefaultSettings defaultSettings;
+    public int gold;
+    private float cooldown;
+    private int goldPerTick;
 
     void Start()
     {
+        gold = defaultSettings.gold;
+        cooldown = defaultSettings.cooldown;
+        goldPerTick = defaultSettings.goldPerTick;
         StartCoroutine(Tick());
     }
     private IEnumerator Tick()

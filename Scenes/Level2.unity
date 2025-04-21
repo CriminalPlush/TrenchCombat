@@ -706,9 +706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e20fe4cc90a20844b7e2526d2512a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSettings: {fileID: 11400000, guid: 6ad8d97abcdbff2429a1016bdf6d0044, type: 2}
   gold: 50
-  cooldown: 0.4
-  goldPerTick: 1
 --- !u!114 &175199172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7775,7 +7774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1433520697
 RectTransform:
   m_ObjectHideFlags: 0

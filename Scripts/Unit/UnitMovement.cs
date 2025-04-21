@@ -99,12 +99,9 @@ public class UnitMovement : MonoBehaviour
             agent.SetDestination(endPoint.position);
             if (link != null)
             {
-                if (link.GetComponents<NavMeshLink>().Length == 2)
-                {
-                    link.GetComponents<NavMeshLink>()[0].enabled = true;
-                    link.GetComponents<NavMeshLink>()[1].enabled = true;
-                    link = null;
-                }
+                if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
+                if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
+                link = null;
             }
             inTrench = false;
             // agent.ResetPath();
@@ -121,12 +118,9 @@ public class UnitMovement : MonoBehaviour
             agent.destination = startPoint.position;
             if (link != null)
             {
-                if (link.GetComponents<NavMeshLink>().Length == 2)
-                {
-                    link.GetComponents<NavMeshLink>()[0].enabled = true;
-                    link.GetComponents<NavMeshLink>()[1].enabled = true;
-                    link = null;
-                }
+                if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
+                if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
+                link = null;
             }
             inTrench = false;
             // agent.ResetPath();
@@ -186,10 +180,10 @@ public class UnitMovement : MonoBehaviour
                 //agent.ResetPath();
                 gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                 link = col.transform.parent.gameObject;
-                if(slot.obstacle != null)
-                {
-                    slot.obstacle.SetActive(true);
-                }
+                /* if(slot.obstacle != null)
+                 {
+                     slot.obstacle.SetActive(true);
+                 }*/
                 if (link.GetComponents<NavMeshLink>().Length > 0)
                 {
                     link.GetComponents<NavMeshLink>()[0].enabled = false;

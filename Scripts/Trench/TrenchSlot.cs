@@ -6,8 +6,7 @@ using UnityEngine.AI;
 public class TrenchSlot : MonoBehaviour
 {
     public GameObject unit;
-    [SerializeField]
-    public GameObject obstacle = null;
+    //public GameObject obstacle = null;
     public bool playerOnly = false;
     public bool enemyOnly = false;
     void Start()
@@ -24,10 +23,11 @@ public class TrenchSlot : MonoBehaviour
         if ((col.tag == "Unit" || col.tag == "Enemy") && unit == null)
         {
             unit = col.gameObject;
-            if (obstacle != null)
-            {
+          //  if (obstacle != null)
+           // {
                 //obstacle.SetActive(true);
-            }
+          //  }
+            //UpdatePaths();
         }
     }
     void OnTriggerExit(Collider col)
@@ -35,12 +35,22 @@ public class TrenchSlot : MonoBehaviour
         if (col.gameObject == unit)
         {
             unit = null;
-            if (obstacle != null)
+           /* if (obstacle != null)
             {
                 obstacle.SetActive(false);
-            }
+            }*/
 
         }
+       // UpdatePaths();
     }
+   /* void UpdatePaths()
+    {
+        NavMeshAgent[] agents = FindObjectsOfType<NavMeshAgent>();
+        foreach (NavMeshAgent agent in agents)
+        {
+            agent.SetDestination(agent.destination);
+        }
+
+    }*/
 
 }
