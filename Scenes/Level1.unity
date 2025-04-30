@@ -5967,7 +5967,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588186, y: -0, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 4.37, y: 11.79, z: -19.33}
+  m_LocalPosition: {x: 7.25, y: 11.79, z: -19.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5986,7 +5986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  limitationLeft: 4
+  limitationLeft: 7.25
   limitationRight: 65
 --- !u!4 &964873040 stripped
 Transform:
@@ -6007,6 +6007,7 @@ GameObject:
   - component: {fileID: 974109621}
   - component: {fileID: 974109623}
   - component: {fileID: 974109624}
+  - component: {fileID: 974109625}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -6108,6 +6109,20 @@ MonoBehaviour:
   unit: {fileID: 8530602}
   winPanel: {fileID: 3856305538179850618}
   SFX: {fileID: 0}
+--- !u!114 &974109625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974109617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb2a52358468804b85df3869b8d12b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 1550436324876504760, guid: e7ee8c23fb2fe114ab8013b12e5651f5, type: 3}
+  fireShower: {fileID: 4439702032551198352, guid: a312de4881d57cb48956c2fb2cc94936, type: 3}
 --- !u!1 &994547265
 GameObject:
   m_ObjectHideFlags: 0
@@ -9549,7 +9564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1748626012
 RectTransform:
   m_ObjectHideFlags: 0
