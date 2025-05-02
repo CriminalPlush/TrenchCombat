@@ -6,6 +6,7 @@ public class SpecialAttack : MonoBehaviour
 {
     [SerializeField] private GameObject area;
     [SerializeField] private GameObject fireShower;
+    public float cooldown = 30; // used by SpecialAttackButton
     private GameObject areaInstance;
     void Start()
     {
@@ -15,11 +16,12 @@ public class SpecialAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
-        if(areaInstance != null)
-            Instantiate(fireShower,areaInstance.transform.position, Quaternion.identity);
-        }
+            if (areaInstance != null)
+                Instantiate(fireShower, areaInstance.transform.position, Quaternion.identity);
+                this.enabled = false;
+        }   
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -38,7 +40,7 @@ public class SpecialAttack : MonoBehaviour
         if (areaInstance != null)
         {
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
-            areaInstance.transform.position = new Vector3(MousePos.x, 1,0);
+            areaInstance.transform.position = new Vector3(MousePos.x, 1, 0);
         }
     }
 }

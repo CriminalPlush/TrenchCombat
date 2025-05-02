@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6806546347397120109
 Transform:
   m_ObjectHideFlags: 0
@@ -2041,7 +2041,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &2658457187665529311
@@ -2220,7 +2219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5307656468529706747
 Transform:
   m_ObjectHideFlags: 0
@@ -2843,7 +2842,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &3908790635350082956
@@ -3670,7 +3668,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &5657122575235456054
@@ -3835,7 +3832,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &5692524745305095316
@@ -4064,7 +4060,7 @@ GameObject:
   - component: {fileID: 1483591369290124531}
   m_Layer: 0
   m_Name: TrenchMesh
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5026,7 +5022,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &7360213190458860886
@@ -5797,7 +5792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &8761343450426581180
@@ -5962,7 +5956,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &8863196974100350301
@@ -6304,7 +6297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  obstacle: {fileID: 0}
   playerOnly: 0
   enemyOnly: 0
 --- !u!1 &8949090906271238882
@@ -6746,6 +6738,10 @@ PrefabInstance:
     - target: {fileID: 8710507143562754956, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_Name
       value: TrenchMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710507143562754956, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8765668070365637649, guid: 14ea7ca76cef7484daf4b563b3ef7b78, type: 3}
       propertyPath: m_Enabled

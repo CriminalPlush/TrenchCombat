@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour
     public UnitAttack UA;
     public UnitBoost UB;
     public bool isDying = false;
+    public bool explosionResist = false;
     /* private bool isMoving = true;
      private bool isRetreating = false;*/
 
