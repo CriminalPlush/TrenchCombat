@@ -16,11 +16,9 @@ public class UnitAttack : MonoBehaviour
     public ParticleSystem attackEffect;
     [SerializeField]
     private Unit unit;
-    [SerializeField]
     private float damage;
     [SerializeField]
     private float baseDamage;
-    [SerializeField]
     private float attackDistance;
     [SerializeField]
     private float baseAttackDistance;
@@ -111,12 +109,12 @@ public class UnitAttack : MonoBehaviour
         Unit other = col.GetComponent<Unit>();
         if (col.GetComponent<Unit>() != null && col.GetComponent<Unit>().isDying == false)
         {
-            other = col.GetComponent<Unit>();
             if ((other.isEnemy && !unit.isEnemy) || (!other.isEnemy && unit.isEnemy))
             {
                 if (attackTarget == null)
                 {
                     attackTarget = col.gameObject;
+                    Debug.Log(col.name);
                 }
             }
         }
@@ -170,13 +168,13 @@ public class UnitAttack : MonoBehaviour
                     {
                         UM.Retreat();
                     }
-                    if (attackTarget.GetComponent<Unit>().HP <= 0)
-                    {
-                        attackTarget = null;
-                    }
-                    yield return new WaitForSeconds(0);
-                    isAttacking = false;
                 }
+                if (attackTarget.GetComponent<Unit>().HP <= 0)
+                {
+                    attackTarget = null;
+                }
+                yield return new WaitForSeconds(0);
+                isAttacking = false;
             }
         }
     }

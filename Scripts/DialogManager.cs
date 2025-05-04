@@ -61,9 +61,9 @@ public class DialogManager : MonoBehaviour
     }
     private IEnumerator TypeWrite()
     {
-        Debug.Log("Sgema");
+       // Debug.Log("Sgema");
         yield return new WaitForSecondsRealtime(typeWriteSpeed);
-        Debug.Log("Sgema");
+//        Debug.Log("Sgema");
         if(messageComponent.maxVisibleCharacters < messages[index].message.Length) messageComponent.maxVisibleCharacters++;
         else if(messages[index].isInterrupted) Next();
         StartCoroutine(TypeWrite());

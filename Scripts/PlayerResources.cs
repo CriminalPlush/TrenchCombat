@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,13 @@ public class PlayerResources : MonoBehaviour
     public int gold;
     private float cooldown;
     private int goldPerTick;
+    [SerializeField] private float goldModifier = 1f; 
+    [SerializeField] private float goldProductionModifier = 1f; 
 
     void Start()
     {
-        gold = defaultSettings.gold;
-        cooldown = defaultSettings.cooldown;
+        gold = Convert.ToInt32(defaultSettings.gold * goldModifier);
+        cooldown = defaultSettings.cooldown / goldProductionModifier;
         goldPerTick = defaultSettings.goldPerTick;
         StartCoroutine(Tick());
     }

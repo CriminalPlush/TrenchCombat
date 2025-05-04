@@ -10,7 +10,9 @@ public class Win : MonoBehaviour
     [SerializeField]
     private GameObject winPanel;
     [SerializeField]
-    private AudioMixerGroup SFX;
+    private AudioMixerGroup SFXMixer;
+    [SerializeField]
+    private AudioSource AS;
     private bool hasWon = false;
     void Start()
     {
@@ -35,12 +37,13 @@ public class Win : MonoBehaviour
             AudioSource[] audioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
             foreach (AudioSource audioSource in audioSources)
             {
-                if (audioSource.outputAudioMixerGroup == SFX)
+                if (audioSource.outputAudioMixerGroup == SFXMixer)
                 {
                     audioSource.Stop();
                 }
             }
             winPanel.SetActive(true);
+            AS.Play();
             Time.timeScale = 0;
         }
     }

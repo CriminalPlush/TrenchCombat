@@ -13,9 +13,8 @@ public class Unit : MonoBehaviour
     public bool isEnemy = false;
 
     public float HP = 20f;
-    public float defence;
-    [SerializeField]
-    public float baseDefence { get; private set; }
+    [HideInInspector]public float defence;
+    public float baseDefence ;//{ get; private set; }
     public bool isTrenchBoosted = false;
     public bool isOfficerBoosted = false;
     public UnitMovement UM;

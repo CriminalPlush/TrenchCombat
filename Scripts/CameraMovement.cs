@@ -8,7 +8,9 @@ public class CameraMovement : MonoBehaviour
     public float limitationLeft;
     public float limitationRight;
     private Vector2 startPos;
-    private float swipeSpeed = 0.007f;     
+    private float swipeSpeed = 0.009f;
+    private Vector2 lastTouchPosition;
+
     void Start()
     {
     }
@@ -46,9 +48,10 @@ public class CameraMovement : MonoBehaviour
                     //Determine if the touch is a moving touch
                     case TouchPhase.Moved:
                         // Determine direction by comparing the current touch position with the initial one
-                        transform.position = new Vector3(transform.position.x - (swipeSpeed * (touch.position - startPos).x), transform.position.y, transform.position.z);
+                        transform.position -= new Vector3(swipeSpeed * (touch.position - startPos).x, 0, 0);
                         if (transform.position.x < limitationLeft) transform.position = new Vector3(limitationLeft, transform.position.y, transform.position.z);
                         if (transform.position.x > limitationRight) transform.position = new Vector3(limitationRight, transform.position.y, transform.position.z);
+                        startPos = touch.position;
                         break;
 
                     case TouchPhase.Ended:
