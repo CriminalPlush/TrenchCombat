@@ -7235,7 +7235,9 @@ MonoBehaviour:
   UA: {fileID: 339984270617610974}
   UB: {fileID: 0}
   isDying: 0
-  explosionResist: 0
+  explosionResist: 0.75
+  explosion: {fileID: 0}
+  fire: {fileID: 0}
 --- !u!208 &2353874859475419336
 NavMeshObstacle:
   m_ObjectHideFlags: 0

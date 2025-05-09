@@ -21,7 +21,9 @@ public class Unit : MonoBehaviour
     public UnitAttack UA;
     public UnitBoost UB;
     public bool isDying = false;
-    public bool explosionResist = false;
+    public float explosionResist = 0f;
+    [SerializeField] GameObject explosion;
+    [SerializeField] GameObject fire;
     /* private bool isMoving = true;
      private bool isRetreating = false;*/
 
@@ -79,8 +81,8 @@ public class Unit : MonoBehaviour
             }
             if (UM != null)
             {
-                UM.enabled = false;
                 UM.agent.isStopped = true;
+                Destroy(UM);
             }
             if (UA != null) UA.enabled = false;
             if (UB != null) UB.enabled = false;

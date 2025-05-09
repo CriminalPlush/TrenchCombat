@@ -46,6 +46,7 @@ public class UnitMovement : MonoBehaviour
             startPoint = x;
         }
         agent.destination = endPoint.position;
+        StartCoroutine(FreezeFix());
     }
 
     // Update is called once per frame
@@ -231,14 +232,18 @@ public class UnitMovement : MonoBehaviour
                 }
             }
         }
-        /*if ((col.tag == "Enemy" && !unit.isEnemy) || (col.tag == "Unit" && unit.isEnemy))
+    }
+    private IEnumerator FreezeFix()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (!inTrench && unit.UA.attackTarget == null && agent.isPathStale)
         {
-            if (gameObject.GetComponent<UnitAttack>() != null && gameObject.GetComponent<UnitAttack>().IsTargetInRange())
-            {
-                Debug.Log(gameObject.name + "|||" + "Beware the beast in black");
-                Stay();
-            }
-        }*/
+            if(isMoving)
+            Move();
+            else if (isRetreating)
+            Retreat();
+        }
+        StartCoroutine(FreezeFix());
     }
     void OnDrawGizmosSelected()
     {

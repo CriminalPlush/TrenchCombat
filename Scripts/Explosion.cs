@@ -20,9 +20,9 @@ public class Explosion : MonoBehaviour
         {
             SpawnCrater();
         }
-        if (col.GetComponent<Unit>() != null && !col.GetComponent<Unit>().explosionResist)
+        if (col.GetComponent<Unit>() != null)
         {
-            col.GetComponent<Unit>().HP -= damage;
+            col.GetComponent<Unit>().HP -= damage - (damage * col.GetComponent<Unit>().explosionResist);
             Destroy(this);
         }
     }
