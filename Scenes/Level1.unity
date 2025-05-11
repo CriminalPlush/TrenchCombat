@@ -7637,7 +7637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -81
+      value: -81.25
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10369,7 +10369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -85
+      value: -85.25
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17938,6 +17938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSettings: {fileID: 11400000, guid: 6ad8d97abcdbff2429a1016bdf6d0044, type: 2}
   gold: 50
+  goldModifier: 1
+  goldProductionModifier: 1
 --- !u!114 &974109621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20305,7 +20307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.239998
+      value: 10.989998
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20764,7 +20766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69
+      value: -69.25
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28722,7 +28724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -77
+      value: -77.25
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29228,7 +29230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -73
+      value: -73.25
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32223,7 +32225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1748626012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32822,7 +32824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2399979
+      value: 2.9899979
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -35744,7 +35746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.239998
+      value: 6.989998
       objectReference: {fileID: 0}
     - target: {fileID: 6345303600968185800, guid: cc16630ce0a27bd41afebf72ea2623eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38150,7 +38152,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.096666664
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: fd3d93425725b994396be2843e4a3b1b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0c4898e9d7bb7f94daa6e921d75535d1, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &2089631046 stripped
 Transform:
