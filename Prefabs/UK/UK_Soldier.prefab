@@ -1241,7 +1241,6 @@ GameObject:
   - component: {fileID: 8883962272818564945}
   - component: {fileID: 119139739285306449}
   - component: {fileID: 6058528157062466392}
-  - component: {fileID: -8176681515540126624}
   - component: {fileID: 5089601168865985203}
   - component: {fileID: 2117545147586714480}
   - component: {fileID: 7630022390963633945}
@@ -1390,28 +1389,16 @@ MonoBehaviour:
   isEnemy: 0
   HP: 10
   defence: 0
+  baseDefence: 0
   isTrenchBoosted: 0
   isOfficerBoosted: 0
   UM: {fileID: 5089601168865985203}
   UA: {fileID: 2117545147586714480}
   UB: {fileID: 0}
   isDying: 0
---- !u!114 &-8176681515540126624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5887243759018643228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f652d6e9c0d03c4082c7c8e6ff74f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: soldier
-  price: 30
-  spawnCooldown: 5
-  icon: {fileID: 2800000, guid: a728a0efe85c27f438f13765a6814d56, type: 3}
+  explosionResist: 0
+  explosion: {fileID: 0}
+  fire: {fileID: 0}
 --- !u!114 &5089601168865985203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,9 +1440,7 @@ MonoBehaviour:
   isAttacking: 0
   attackEffect: {fileID: 6563195237973904602}
   unit: {fileID: 6058528157062466392}
-  damage: 0
   baseDamage: 1
-  attackDistance: 10
   baseAttackDistance: 10
   attackSound:
   - {fileID: 4393260422226836729}

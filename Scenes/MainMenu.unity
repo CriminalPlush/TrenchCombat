@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85fc9971086db14a9da6e7a38a3ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 1
+  sceneName: Level1
 --- !u!114 &145548931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4431,7 +4431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85fc9971086db14a9da6e7a38a3ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 2
+  sceneName: Level2
 --- !u!114 &1510451976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4578,7 +4578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85fc9971086db14a9da6e7a38a3ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 3
+  sceneName: Level3
 --- !u!114 &1540064864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5265,7 +5265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85fc9971086db14a9da6e7a38a3ef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 4
+  sceneName: Challenge1
 --- !u!114 &1829919978
 MonoBehaviour:
   m_ObjectHideFlags: 0

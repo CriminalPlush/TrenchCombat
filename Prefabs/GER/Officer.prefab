@@ -986,12 +986,12 @@ GameObject:
   - component: {fileID: 6155566063474380710}
   - component: {fileID: 7289278127751442154}
   - component: {fileID: 3253172724565939853}
-  - component: {fileID: 4614090973296274654}
   - component: {fileID: 3582607864837806106}
   - component: {fileID: 2700785006192429578}
   - component: {fileID: 5954429745004465480}
   - component: {fileID: 3658283330486297845}
   - component: {fileID: 2464679879594821472}
+  - component: {fileID: 8438168968507495450}
   m_Layer: 3
   m_Name: Officer
   m_TagString: Unit
@@ -1137,28 +1137,16 @@ MonoBehaviour:
   isEnemy: 0
   HP: 12
   defence: 0
+  baseDefence: 0
   isTrenchBoosted: 0
   isOfficerBoosted: 0
   UM: {fileID: 3582607864837806106}
   UA: {fileID: 2700785006192429578}
   UB: {fileID: 3658283330486297845}
   isDying: 0
---- !u!114 &4614090973296274654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4420570288143554074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f652d6e9c0d03c4082c7c8e6ff74f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: officer
-  price: 70
-  spawnCooldown: 8
-  icon: {fileID: 2800000, guid: 9c2c472f16cc54a46ad136ad623d934d, type: 3}
+  explosionResist: 0
+  explosion: {fileID: 0}
+  fire: {fileID: 0}
 --- !u!114 &3582607864837806106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,9 +1188,7 @@ MonoBehaviour:
   isAttacking: 0
   attackEffect: {fileID: 7282257401650749137}
   unit: {fileID: 3253172724565939853}
-  damage: 0
   baseDamage: 0.5
-  attackDistance: 10
   baseAttackDistance: 10
   attackSound:
   - {fileID: 5181431726533444404}
@@ -1363,6 +1349,28 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8438168968507495450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420570288143554074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo:
+    title: Officer
+    price: 75
+    level: 1
+    spawnCooldown: 9
+    icon: {fileID: 2800000, guid: 9c2c472f16cc54a46ad136ad623d934d, type: 3}
+    unitUpgradeTable:
+    - priceOfUpgrade: 1000
+      damage: 0.5
+      HP: 12
 --- !u!1 &4714665577682234190
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,9 +59,9 @@ public class Unit : MonoBehaviour
         if (!isDying)
         {
             isDying = true;
-            if (isEnemy && GetComponent<UnitInfo>() == true)
+            if (isEnemy && GetComponent<UnitInfoSlot>() == true)
             {
-                FindObjectOfType<PlayerResources>().gold += GetComponent<UnitInfo>().price / 2;
+                FindObjectOfType<PlayerResources>().gold += GetComponent<UnitInfoSlot>().unitInfo.price / 2;
             }
             if (UM != null && UM.inTrench)
             {

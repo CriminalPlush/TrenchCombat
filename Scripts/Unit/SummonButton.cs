@@ -21,7 +21,7 @@ public class SummonButton : MonoBehaviour
     private PlayerResources resources;
     void Start()
     {
-        unitInfo = unit.GetComponent<UnitInfo>();
+        unitInfo = unit.GetComponent<UnitInfoSlot>().unitInfo;
         image.texture = unitInfo.icon;
         cooldown = unitInfo.spawnCooldown;
         slider.maxValue = cooldown;

@@ -1036,9 +1036,7 @@ MonoBehaviour:
   isAttacking: 0
   attackEffect: {fileID: 1253220172451653104}
   unit: {fileID: 928594019205253287}
-  damage: 1.5
   baseDamage: 1.5
-  attackDistance: 10
   baseAttackDistance: 10
   attackSound:
   - {fileID: 8749310144349421409}
@@ -6399,7 +6397,6 @@ GameObject:
   - component: {fileID: 3717776755735482559}
   - component: {fileID: 5477982740969017542}
   - component: {fileID: 8310804338976230142}
-  - component: {fileID: 7436060891138127419}
   m_Layer: 3
   m_Name: GER_Tank
   m_TagString: Unit
@@ -6449,12 +6446,16 @@ MonoBehaviour:
   isEnemy: 0
   HP: 40
   defence: 0.1
+  baseDefence: 0
   isTrenchBoosted: 0
   isOfficerBoosted: 0
   UM: {fileID: 7185039537071622655}
   UA: {fileID: 8812754456872657961}
   UB: {fileID: 0}
   isDying: 0
+  explosionResist: 0
+  explosion: {fileID: 0}
+  fire: {fileID: 0}
 --- !u!114 &7185039537071622655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6659,22 +6660,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7436060891138127419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7973691240677889770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f652d6e9c0d03c4082c7c8e6ff74f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Tank
-  price: 250
-  spawnCooldown: 20
-  icon: {fileID: 2800000, guid: f47ef68f9c325c84fab3689642ff6810, type: 3}
 --- !u!1 &8123821720830298919
 GameObject:
   m_ObjectHideFlags: 0
