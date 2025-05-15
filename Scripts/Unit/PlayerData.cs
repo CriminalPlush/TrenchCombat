@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerData
 {
     public int money;
-    public UnitInfo[] unitList;
+    public UnitInfo[] unitsList;
+    public UnitInfo[] unitsSelected = new UnitInfo[6];
     public List<string> levelsPassed;
 } 
