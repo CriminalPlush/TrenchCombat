@@ -7136,6 +7136,7 @@ GameObject:
   - component: {fileID: 7535159085116544860}
   - component: {fileID: 8934080234066050277}
   - component: {fileID: 2353874859475419336}
+  - component: {fileID: -3531406443267756746}
   m_Layer: 3
   m_Name: Bunker
   m_TagString: Enemy
@@ -7234,7 +7235,7 @@ MonoBehaviour:
   UA: {fileID: 339984270617610974}
   UB: {fileID: 0}
   isDying: 0
-  explosionResist: 0.75
+  explosionResist: 0.9
   explosion: {fileID: 0}
   fire: {fileID: 0}
 --- !u!208 &2353874859475419336
@@ -7253,6 +7254,25 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-3531406443267756746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010910343288096382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo:
+    title: nothing
+    price: 200
+    level: 0
+    spawnCooldown: 5
+    icon: {fileID: 0}
+    unitUpgradeTable: []
 --- !u!1001 &6727806689826610529
 PrefabInstance:
   m_ObjectHideFlags: 0

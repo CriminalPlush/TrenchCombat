@@ -6603,6 +6603,7 @@ GameObject:
   - component: {fileID: 2766066047029988555}
   - component: {fileID: 557103748520830539}
   - component: {fileID: 516915385825943437}
+  - component: {fileID: 7925302034206865366}
   m_Layer: 3
   m_Name: UK_Sniper
   m_TagString: Unit
@@ -6968,6 +6969,25 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7925302034206865366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510621577086804726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo:
+    title: nothing
+    price: 75
+    level: 1
+    spawnCooldown: 5
+    icon: {fileID: 0}
+    unitUpgradeTable: []
 --- !u!1 &9139376689310278356
 GameObject:
   m_ObjectHideFlags: 0

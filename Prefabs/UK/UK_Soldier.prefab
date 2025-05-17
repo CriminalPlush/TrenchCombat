@@ -1245,6 +1245,7 @@ GameObject:
   - component: {fileID: 2117545147586714480}
   - component: {fileID: 7630022390963633945}
   - component: {fileID: 6794670874196630963}
+  - component: {fileID: 3188122760111170696}
   m_Layer: 3
   m_Name: UK_Soldier
   m_TagString: Unit
@@ -1588,6 +1589,25 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &3188122760111170696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5887243759018643228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitInfo:
+    title: nothing
+    price: 30
+    level: 1
+    spawnCooldown: 5
+    icon: {fileID: 0}
+    unitUpgradeTable: []
 --- !u!1 &6276784033355547325
 GameObject:
   m_ObjectHideFlags: 0

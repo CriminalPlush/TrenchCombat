@@ -10,9 +10,8 @@ public class UnitInfo
     public int price = 0;
     public int level = 0;
     public int spawnCooldown = 5;
-    public Texture icon;
+    public Texture icon { get; private set; }
     public UnitUpgradeInfo[] unitUpgradeTable;
-    [Serializable]
 
     public class UnitUpgradeInfo
     {
