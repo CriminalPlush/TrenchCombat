@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Localization.Platform.Android;
@@ -13,17 +14,23 @@ public static class SaveSystem
     }
     public static PlayerData Load()
     {
+        Debug.Log(Path.Combine(Application.persistentDataPath, "playerData.json"));
+        PlayerData data;
         if (File.Exists(saveFilePath))
         {
             string json = File.ReadAllText(saveFilePath);
-            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-            return data;
+            data = JsonUtility.FromJson<PlayerData>(json);
         }
-        else 
+        else
         {
-            PlayerData playerData = new PlayerData();
-            playerData.unitsList = new List<UnitData> { new UnitData("Soldier", 1) };
-            return new PlayerData();
+            data = new PlayerData();
         }
+        if (data.unitsList.Count == 0)
+        {
+            data.unitsList = new List<UnitData> { new UnitData("Soldier", 1) };
+            Save(data);
+        }
+        return data;
+
     }
 }

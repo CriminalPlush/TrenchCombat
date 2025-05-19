@@ -1489,16 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo:
-    title: Soldier
-    price: 30
-    level: 1
-    spawnCooldown: 4
-    icon: {fileID: 2800000, guid: a728a0efe85c27f438f13765a6814d56, type: 3}
-    unitUpgradeTable:
-    - priceOfUpgrade: 1000
-      damage: 1
-      HP: 10
+  unitInfo: {fileID: 11400000, guid: 1a2fd18fd3b4c3143a22ba659a364130, type: 2}
 --- !u!1 &5919849857575111597
 GameObject:
   m_ObjectHideFlags: 0

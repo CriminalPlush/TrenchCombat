@@ -6981,13 +6981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo:
-    title: nothing
-    price: 75
-    level: 1
-    spawnCooldown: 5
-    icon: {fileID: 0}
-    unitUpgradeTable: []
+  unitInfo: {fileID: 11400000, guid: 34b68a6f73e6fd542ac9f3513dedf475, type: 2}
 --- !u!1 &9139376689310278356
 GameObject:
   m_ObjectHideFlags: 0

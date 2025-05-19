@@ -1694,7 +1694,6 @@ GameObject:
   - component: {fileID: 8130550442156296587}
   - component: {fileID: 2312994302718874857}
   - component: {fileID: 1811160774249060574}
-  - component: {fileID: 6607297716074990127}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1818,19 +1817,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6607297716074990127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4446465550665122673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85fc9971086db14a9da6e7a38a3ef7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 
 --- !u!1 &4461640088540075816
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,6 +3163,7 @@ GameObject:
   - component: {fileID: 8119187233359465239}
   - component: {fileID: 2310352953605305822}
   - component: {fileID: 6373072016327246993}
+  - component: {fileID: 4550512793205765700}
   m_Layer: 5
   m_Name: Menu_Button
   m_TagString: Untagged
@@ -3286,7 +3273,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6607297716074990127}
+      - m_Target: {fileID: 4550512793205765700}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -3298,6 +3285,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4550512793205765700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355352272819181456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85fc9971086db14a9da6e7a38a3ef7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: MainMenu
 --- !u!1 &6548684958380607631
 GameObject:
   m_ObjectHideFlags: 0

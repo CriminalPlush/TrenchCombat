@@ -22,4 +22,26 @@ public class PlayerData
         }
         return unitToReturn;
     }
-} 
+    public void UpdateLevel(string title, int level)
+    {
+        foreach (UnitData unit in unitsList)
+        {
+            if (unit.title == title)
+            {
+                unit.level = level;
+                break;
+            }
+        }
+    }
+    public void UpdateLevel(string title)
+    {
+        foreach (UnitData unit in unitsList)
+        {
+            if (unit.title == title)
+            {
+                unit.level++;
+                break;
+            }
+        }
+    }
+}

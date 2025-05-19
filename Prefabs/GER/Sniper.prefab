@@ -6981,16 +6981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo:
-    title: Sniper
-    price: 70
-    level: 1
-    spawnCooldown: 13
-    icon: {fileID: 2800000, guid: 9edc3ab06419e5d49bc5244c7b13bebd, type: 3}
-    unitUpgradeTable:
-    - priceOfUpgrade: 1000
-      damage: 4.5
-      HP: 8
+  unitInfo: {fileID: 11400000, guid: 34b68a6f73e6fd542ac9f3513dedf475, type: 2}
 --- !u!1 &9139376689310278356
 GameObject:
   m_ObjectHideFlags: 0
