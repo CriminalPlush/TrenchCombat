@@ -17,8 +17,14 @@ public class PlayerData
         {
             if (unit.title == title)
             {
+                unitToReturn = unit;
                 break;
             }
+        }
+        if (unitToReturn == null)
+        {
+            unitToReturn = new UnitData(title, 0);
+            unitsList.Add(unitToReturn);
         }
         return unitToReturn;
     }

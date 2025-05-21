@@ -5,9 +5,10 @@ using UnityEngine;
 public class AddGazillion : MonoBehaviour
 {
     private PlayerData playerData;
-    void Awake()
+    void Start()
     {
         playerData = SaveSystem.Load();
+        FindObjectOfType<DisplayMoney>().UpdateInfo(playerData.money);
     }
 
     // Update is called once per frame
@@ -15,9 +16,6 @@ public class AddGazillion : MonoBehaviour
     {
         playerData.money += 1000;
         SaveSystem.Save(playerData);
-        if (FindObjectOfType<MoneyUI>() != null)
-        {
-            FindObjectOfType<MoneyUI>().playerData = playerData;
-        }
+        FindObjectOfType<DisplayMoney>().UpdateInfo(playerData.money);
     }
 }

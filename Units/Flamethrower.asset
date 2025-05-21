@@ -23,6 +23,15 @@ MonoBehaviour:
   - priceOfUpgrade: 500
     damage: 0
     HP: 0
-  - priceOfUpgrade: 1000
-    damage: 0.2
+    preAttackCooldown: 0.2
+    postAttackCooldown: 0.2
+  - priceOfUpgrade: 1500
+    damage: 0.15
     HP: 20
+    preAttackCooldown: 0.2
+    postAttackCooldown: 0.2
+  - priceOfUpgrade: 2000
+    damage: 0.17
+    HP: 22
+    preAttackCooldown: 0.2
+    postAttackCooldown: 0.2
