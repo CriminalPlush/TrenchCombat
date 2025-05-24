@@ -1012,12 +1012,14 @@ MonoBehaviour:
   isEnemy: 0
   HP: 40
   defence: 0
+  level: 1
   baseDefence: 0
   isTrenchBoosted: 0
   isOfficerBoosted: 0
   UM: {fileID: 0}
   UA: {fileID: 0}
   UB: {fileID: 0}
+  unitInfo: {fileID: 11400000, guid: e77e181cdb1c9734b8d7d279999fd191, type: 2}
   isDying: 0
   explosionResist: 1
   explosion: {fileID: 0}

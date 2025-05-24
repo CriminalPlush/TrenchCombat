@@ -195,5 +195,9 @@ public class UnitAttack : MonoBehaviour
             return false;
         }
     }
+    public void UnitDataApply(UnitUpgradeInfo[] unitUpgradeTable, int level)
+    {
+        baseDamage = unitUpgradeTable[level].damage;
+    }
 
 }

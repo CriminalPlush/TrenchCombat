@@ -7,29 +7,32 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 
 public class Unit : MonoBehaviour
 {
     public bool isEnemy = false;
-
-    public float HP = 20f;
-    [HideInInspector]public float defence;
-    public float baseDefence ;//{ get; private set; }
+    public float HP;
+    [HideInInspector] public float defence;
+    [SerializeField] private int level = 1; //Works only for AI
+    public float baseDefence;//{ get; private set; }
     public bool isTrenchBoosted = false;
     public bool isOfficerBoosted = false;
     public UnitMovement UM;
     public UnitAttack UA;
     public UnitBoost UB;
+    public UnitInfo unitInfo;
     public bool isDying = false;
     public float explosionResist = 0f;
     [SerializeField] GameObject explosion;
     [SerializeField] GameObject fire;
-    /* private bool isMoving = true;
-     private bool isRetreating = false;*/
+
+    private UnitData unitData;
 
     void Start()
     {
         defence = baseDefence;
+        UnitDataApply();
     }
 
     void FixedUpdate()
@@ -59,9 +62,9 @@ public class Unit : MonoBehaviour
         if (!isDying)
         {
             isDying = true;
-            if (isEnemy && GetComponent<UnitInfoSlot>() == true)
+            if (isEnemy && unitInfo != null)
             {
-                FindObjectOfType<PlayerResources>().gold += GetComponent<UnitInfoSlot>().unitInfo.price / 2;
+                FindObjectOfType<PlayerResources>().gold += unitInfo.price / 2;
             }
             if (UM != null && UM.inTrench)
             {
@@ -108,6 +111,19 @@ public class Unit : MonoBehaviour
             if (UB == null || !UB.unitsBoosted.Contains(this))
             {
                 isOfficerBoosted = false;
+            }
+        }
+    }
+
+    private void UnitDataApply()
+    { 
+        if (!isEnemy)
+        {
+            level = SaveSystem.Load().FindUnitByName(unitInfo.title).level;  
+            HP = unitInfo.unitUpgradeTable[level].HP;
+            if (UA != null)
+            {
+                UA.UnitDataApply(unitInfo.unitUpgradeTable, level);
             }
         }
     }

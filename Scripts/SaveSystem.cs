@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Localization.Platform.Android;
 using UnityEngine;
 
 public static class SaveSystem
@@ -25,9 +24,10 @@ public static class SaveSystem
         {
             data = new PlayerData();
         }
-        if (data.unitsList.Count == 0)
+        Debug.Log(data.unitsList == null);
+        if (data.unitsList == null || data.unitsList.Count == 0)
         {
-            data.unitsList = new List<UnitData> { new UnitData("Soldier", 1) };
+            data.unitsList = new List<UnitData> { new UnitData("Soldier", 1) , new UnitData("Base", 1)};
             Save(data);
         }
         return data;

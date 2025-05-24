@@ -21,7 +21,7 @@ public class UnitBoost : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
-        if ((col.GetComponent<Unit>() != null && !col.GetComponent<Unit>().isEnemy && unit.isEnemy) || (col.GetComponent<Unit>() != null && !col.GetComponent<Unit>().isEnemy && !unit.isEnemy))
+        if (col.GetComponent<Unit>() != null && ((!col.GetComponent<Unit>().isEnemy && !unit.isEnemy) || (col.GetComponent<Unit>().isEnemy && unit.isEnemy)))
         {
             unitsBoosted.Add(col.GetComponent<Unit>());
         }
