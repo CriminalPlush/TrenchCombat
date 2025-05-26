@@ -7,7 +7,6 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
-using Unity.VisualScripting;
 
 public class Unit : MonoBehaviour
 {

@@ -8,7 +8,6 @@ public class AddGazillion : MonoBehaviour
     void Start()
     {
         playerData = SaveSystem.Load();
-        FindObjectOfType<DisplayMoney>().UpdateInfo(playerData.money);
     }
 
     // Update is called once per frame

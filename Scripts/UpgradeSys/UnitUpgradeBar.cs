@@ -16,7 +16,7 @@ public class UnitUpgradeBar : MonoBehaviour
         HPSlider.value = HP;
         damageSlider.value = damage / cooldown;
 
-        if (unitData.level + 1 < unitInfo.unitUpgradeTable.Length)
+        if (unitData.level + 1 < unitUpgradeTable.Length)
         {
             int potentialHP = unitUpgradeTable[unitData.level + 1].HP;
             float potentialdamage = unitUpgradeTable[unitData.level + 1].damage;
