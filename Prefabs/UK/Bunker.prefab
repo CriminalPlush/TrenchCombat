@@ -7228,12 +7228,14 @@ MonoBehaviour:
   isEnemy: 1
   HP: 50
   defence: 0
+  level: 1
   baseDefence: 0.25
   isTrenchBoosted: 0
   isOfficerBoosted: 0
   UM: {fileID: 0}
   UA: {fileID: 339984270617610974}
   UB: {fileID: 0}
+  unitInfo: {fileID: 0}
   isDying: 0
   explosionResist: 0.9
   explosion: {fileID: 0}
@@ -7266,13 +7268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ed9d3c39ce944dbc4b2e0e0c96a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitInfo:
-    title: nothing
-    price: 200
-    level: 0
-    spawnCooldown: 5
-    icon: {fileID: 0}
-    unitUpgradeTable: []
+  unitInfo: {fileID: 11400000, guid: cab831488a59fd04f8329b82cba0ab33, type: 2}
 --- !u!1001 &6727806689826610529
 PrefabInstance:
   m_ObjectHideFlags: 0
