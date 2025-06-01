@@ -4,7 +4,7 @@ public static class TrenchFinder
 {
 
     // Update is called once per frame
-    public static Vector3? Find(Vector3 unitPos)
+    public static Vector3 Find(Vector3 unitPos)
     {
         Vector3 destination = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
         foreach (TrenchSlot trench in GameObject.FindObjectsOfType<TrenchSlot>())
@@ -17,13 +17,7 @@ public static class TrenchFinder
                 }
             }
         }
-        if (destination == new Vector3(int.MaxValue, int.MaxValue, int.MaxValue))
-        {
-            return null;
-        }
-        else
-        {
-            return destination;
-        }
+
+        return destination;
     }
 }

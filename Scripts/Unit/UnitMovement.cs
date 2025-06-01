@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
 using System;
+using TreeEditor;
 
 public class UnitMovement : MonoBehaviour
 {
@@ -52,8 +53,12 @@ public class UnitMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        //Debug//
         isOnOffLink = agent.isOnOffMeshLink;
         isImoveinImovout = agent.isStopped;
+
+
         if (agent.isOnOffMeshLink && !inTrench && !ignoreOffMeshLink)
         {
             if (commandQueue.Count > 0)
@@ -82,12 +87,19 @@ public class UnitMovement : MonoBehaviour
             }
             commandQueue.RemoveAt(0);
         }
-        FaceTarget();
         if (UA != null && UA.attackTarget != null && UA.IsTargetInRange() && !isOnOffLink)
         {
             Stay();
         }
-
+        if (UA != null && UA.attackTarget == null && !inTrench)
+        {
+            agent.SetDestination(TrenchFinder.Find(transform.position));
+        }
+        else if (UA != null && UA.attackTarget == null && inTrench)
+        {
+            agent.SetDestination(endPoint.position);
+        }
+        FaceTarget();
     }
     public void Move()
     {
@@ -169,49 +181,7 @@ public class UnitMovement : MonoBehaviour
             agent.CompleteOffMeshLink();
         }
     }
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.tag == "Trench")
-        {
-            TrenchSlot slot = col.transform.parent.GetComponent<TrenchSlot>();
-            if (slot.unit == gameObject && (!(slot.enemyOnly && !unit.isEnemy)) && (!(slot.playerOnly && unit.isEnemy)))
-            {
-                Debug.Log("Checkit checkit");
-                inTrench = true;
-                //agent.ResetPath();
-                gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-                link = col.transform.parent.gameObject;
-                /* if(slot.obstacle != null)
-                 {
-                     slot.obstacle.SetActive(true);
-                 }*/
-                if (link.GetComponents<NavMeshLink>().Length > 0)
-                {
-                    link.GetComponents<NavMeshLink>()[0].enabled = false;
-                    if (link.GetComponents<NavMeshLink>().Length > 1) link.GetComponents<NavMeshLink>()[1].enabled = false;
-                }
-                if (col.transform.parent.parent.GetComponent<Trench>().lockedIn == false && !unit.isEnemy)
-                {
-                    if (isMoving)
-                    {
-                        commandQueue.Add("Move");
-                    }
-                    else if (isRetreating)
-                    {
-                        commandQueue.Add("Retreat");
-                    }
-                }
-                else if (col.transform.parent.parent.GetComponent<Trench>().lockedIn == true)
-                {
-                    commandQueue = new List<string>();
-                }
-            }
-            else
-            {
-                inTrench = false;
-            }
-        }
-    }
+
     void OnTriggerStay(Collider col)
     {
         if (col.tag == "StopIfNoPath")
@@ -238,10 +208,10 @@ public class UnitMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (!inTrench && unit.UA.attackTarget == null && agent.isPathStale)
         {
-            if(isMoving)
-            Move();
+            if (isMoving)
+                Move();
             else if (isRetreating)
-            Retreat();
+                Retreat();
         }
         StartCoroutine(FreezeFix());
     }
