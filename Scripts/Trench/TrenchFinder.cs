@@ -1,23 +1,48 @@
 using UnityEngine;
 
+
 public static class TrenchFinder
 {
 
     // Update is called once per frame
-    public static Vector3 Find(Vector3 unitPos)
+    public static Vector3? FindNext(Vector3 unitPos, int index, bool isEnemy)
     {
-        Vector3 destination = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-        foreach (TrenchSlot trench in GameObject.FindObjectsOfType<TrenchSlot>())
+        if (isEnemy)
         {
-            if (trench.unit == null)
+            index = GameObject.FindObjectsOfType<TrenchSlot>().Length - 1;
+        }
+        Vector3 destination = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
+        foreach (TrenchSlot trenchSlot in GameObject.FindObjectsOfType<TrenchSlot>())
+        {
+            if (trenchSlot.unit == null)
             {
-                if (Vector3.Distance(unitPos, destination) > Vector3.Distance(unitPos, trench.transform.position) || destination == null)
+                if ((Vector3.Distance(unitPos, destination) > Vector3.Distance(unitPos, trenchSlot.trench.transform.position) || destination == null)
+                    && trenchSlot.gameObject.GetComponentInParent<Trench>().index == index)
+                //  && !(trenchSlot.trench.playerOnly && isEnemy) && !(trenchSlot.trench.enemyOnly && !isEnemy))
                 {
-                    destination = trench.transform.position;
+                    destination = trenchSlot.transform.position;
                 }
             }
         }
-
-        return destination;
+        if (destination == new Vector3(int.MaxValue, int.MaxValue, int.MaxValue))
+        {
+            return null;
+        }
+        else
+        {
+            return destination;
+        }
+    }
+    public static Trench FindTrenchByIndex(int index)
+    {
+        Trench trench = null;
+        foreach (Trench _trench in GameObject.FindObjectsOfType<Trench>())
+        {
+            if (_trench.index == index)
+            {
+                trench = _trench;
+            }
+        }
+        return trench;
     }
 }

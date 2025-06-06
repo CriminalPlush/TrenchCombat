@@ -10,13 +10,14 @@ public class UnitMovement : MonoBehaviour
 {
     [SerializeField]
     public bool inTrench = false;
+    public int trenchIndex = 0;
     public List<string> commandQueue;
     private bool executeCommand = true;
     public NavMeshAgent agent;
     public Transform startPoint;
     public Transform endPoint;
-    [SerializeField]
-    public GameObject link;
+   // [SerializeField]
+ //   public GameObject link;
     public bool isMoving = true;
     public bool isRetreating = false;
     private UnitAttack UA = null;
@@ -65,7 +66,7 @@ public class UnitMovement : MonoBehaviour
             {
                 commandQueue = new List<string> { commandQueue[0] };
             }
-            EnterOffMeshLink();
+            //EnterOffMeshLink();
         }
         if (executeCommand
         && commandQueue.Count > 0
@@ -91,9 +92,19 @@ public class UnitMovement : MonoBehaviour
         {
             Stay();
         }
-        if (UA != null && UA.attackTarget == null && !inTrench)
+        if ((UA == null || UA != null && UA.attackTarget == null && !inTrench) //Check if there's no targets and if unit is not in trench 
+        && TrenchFinder.FindNext(transform.position, trenchIndex, unit.isEnemy) != null // Checks if there's trenches left
+        )
         {
-            agent.SetDestination(TrenchFinder.Find(transform.position));
+            if (!(TrenchFinder.FindTrenchByIndex(trenchIndex).playerOnly && unit.isEnemy)
+            && !(TrenchFinder.FindTrenchByIndex(trenchIndex).enemyOnly && !unit.isEnemy))
+            {
+                agent.SetDestination(TrenchFinder.FindNext(transform.position, trenchIndex, unit.isEnemy) ?? Vector3.zero);
+            }
+            else
+            {
+                trenchIndex++;
+            }
         }
         else if (UA != null && UA.attackTarget == null && inTrench)
         {
@@ -110,12 +121,12 @@ public class UnitMovement : MonoBehaviour
             isRetreating = false;
             agent.ResetPath();
             agent.SetDestination(endPoint.position);
-            if (link != null)
+         /*   if (link != null)
             {
                 if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
                 if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
                 link = null;
-            }
+            }*/
             inTrench = false;
             // agent.ResetPath();
         }
@@ -129,12 +140,12 @@ public class UnitMovement : MonoBehaviour
             isMoving = false;
             agent.ResetPath();
             agent.destination = startPoint.position;
-            if (link != null)
+           /* if (link != null)
             {
                 if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
                 if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
                 link = null;
-            }
+            }*/
             inTrench = false;
             // agent.ResetPath();
         }
@@ -165,7 +176,7 @@ public class UnitMovement : MonoBehaviour
             }
         }
     }
-    void EnterOffMeshLink()
+  /*  void EnterOffMeshLink()
     {
         OffMeshLinkData data = agent.currentOffMeshLinkData;
 
@@ -181,7 +192,7 @@ public class UnitMovement : MonoBehaviour
             agent.CompleteOffMeshLink();
         }
     }
-
+*/
     void OnTriggerStay(Collider col)
     {
         if (col.tag == "StopIfNoPath")

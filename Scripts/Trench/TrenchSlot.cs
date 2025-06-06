@@ -6,11 +6,15 @@ using UnityEngine.AI;
 public class TrenchSlot : MonoBehaviour
 {
     public GameObject unit;
-    public bool playerOnly = false;
-    public bool enemyOnly = false;
-    void Start()
+    private bool playerOnly = false;
+    private bool enemyOnly = false;
+    public Trench trench;
+    void Awake()
     {
         unit = null;
+        trench = transform.parent.gameObject.GetComponent<Trench>();
+        playerOnly = trench.playerOnly;
+        enemyOnly = trench.enemyOnly;
     }
 
     void Update()

@@ -8,7 +8,7 @@ public class GetOutCommand : MonoBehaviour
     private GameObject Trench;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,11 +16,15 @@ public class GetOutCommand : MonoBehaviour
     {
         foreach (Transform x in Trench.transform)
         {
-            if (x.gameObject.GetComponent<TrenchSlot>() != null)
+            if (x.gameObject.GetComponent<TrenchSlot>() != null && x.gameObject.GetComponent<TrenchSlot>().unit != null)
             {
-                if(x.gameObject.GetComponent<TrenchSlot>().unit != null){
-                if(x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>() != null)
-                x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().commandQueue.Add("Move");
+                if (x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>() != null)
+                {
+                    x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().Move();
+                    if (x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().trenchIndex == Trench.GetComponent<Trench>().index) // prevents increasing index more than once (I guess)
+                    {
+                        x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().trenchIndex++;
+                    }
                 }
             }
         }

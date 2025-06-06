@@ -65,15 +65,10 @@ public class Unit : MonoBehaviour
             {
                 FindObjectOfType<PlayerResources>().gold += unitInfo.price / 2;
             }
-            if (UM != null && UM.inTrench)
+          /*  if (UM != null && UM.inTrench)
             {
-                if (UM.link.GetComponents<NavMeshLink>().Length == 2)
-                {
-                    UM.link.GetComponents<NavMeshLink>()[0].enabled = true;
-                    UM.link.GetComponents<NavMeshLink>()[1].enabled = true;
-                }
                 UM.link.GetComponent<TrenchSlot>().unit = null;
-            }
+            }*/
             if (GetComponent<UnitBoost>() == true)
             {
                 foreach (Unit x in GetComponent<UnitBoost>().unitsBoosted)

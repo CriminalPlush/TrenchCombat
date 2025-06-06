@@ -72,6 +72,7 @@ public class ExpelUnitCommand : MonoBehaviour
         {
             if (x.GetComponent<UnitInfo>() != null && x.GetComponent<UnitInfo>().title == unitInfo.title)
             {
+                x.GetComponent<UnitMovement>().trenchIndex++;
                 x.GetComponent<UnitMovement>().Move();
             }
         }
