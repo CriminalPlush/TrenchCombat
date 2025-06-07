@@ -16,8 +16,8 @@ public class UnitMovement : MonoBehaviour
     public NavMeshAgent agent;
     public Transform startPoint;
     public Transform endPoint;
-   // [SerializeField]
- //   public GameObject link;
+    // [SerializeField]
+    //   public GameObject link;
     public bool isMoving = true;
     public bool isRetreating = false;
     private UnitAttack UA = null;
@@ -46,6 +46,7 @@ public class UnitMovement : MonoBehaviour
             Transform x = endPoint;
             endPoint = startPoint;
             startPoint = x;
+            trenchIndex = FindObjectsOfType<Trench>().Length - 1;
         }
         agent.destination = endPoint.position;
         StartCoroutine(FreezeFix());
@@ -92,21 +93,31 @@ public class UnitMovement : MonoBehaviour
         {
             Stay();
         }
-        if ((UA == null || UA != null && UA.attackTarget == null && !inTrench) //Check if there's no targets and if unit is not in trench 
-        && TrenchFinder.FindNext(transform.position, trenchIndex, unit.isEnemy) != null // Checks if there's trenches left
-        )
+        if ((UA == null || (UA != null && UA.attackTarget == null)) && !inTrench) //Check if there's no targets and if unit is not in trench                                                                   
         {
-            if (!(TrenchFinder.FindTrenchByIndex(trenchIndex).playerOnly && unit.isEnemy)
-            && !(TrenchFinder.FindTrenchByIndex(trenchIndex).enemyOnly && !unit.isEnemy))
+            //   Debug.Log(TrenchFinder.FindTrenchByIndex(trenchIndex).HasAnyFreeSlot());
+            if (TrenchFinder.FindNext(transform.position, trenchIndex + (unit.isEnemy ? -1 : 1)) != null // if there's a trench
+            && !(TrenchFinder.FindTrenchByIndex(trenchIndex).playerOnly && unit.isEnemy)
+            && !(TrenchFinder.FindTrenchByIndex(trenchIndex).enemyOnly && !unit.isEnemy) // if unit not excluded from trench by it's rules
+            && TrenchFinder.FindTrenchByIndex(trenchIndex).HasAnyFreeSlot() // if has any free slots
+            )
             {
-                agent.SetDestination(TrenchFinder.FindNext(transform.position, trenchIndex, unit.isEnemy) ?? Vector3.zero);
+                agent.SetDestination(TrenchFinder.FindNext(transform.position, trenchIndex) ?? Vector3.zero);
             }
             else
             {
-                trenchIndex++;
+                if (!unit.isEnemy)
+                {
+                    trenchIndex++;
+                }
+                else
+                {
+                    trenchIndex--;
+                }
             }
+            // }
         }
-        else if (UA != null && UA.attackTarget == null && inTrench)
+        else if ((UA == null || (UA != null && UA.attackTarget == null)) && inTrench)
         {
             agent.SetDestination(endPoint.position);
         }
@@ -121,12 +132,12 @@ public class UnitMovement : MonoBehaviour
             isRetreating = false;
             agent.ResetPath();
             agent.SetDestination(endPoint.position);
-         /*   if (link != null)
-            {
-                if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
-                if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
-                link = null;
-            }*/
+            /*   if (link != null)
+               {
+                   if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
+                   if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
+                   link = null;
+               }*/
             inTrench = false;
             // agent.ResetPath();
         }
@@ -140,12 +151,12 @@ public class UnitMovement : MonoBehaviour
             isMoving = false;
             agent.ResetPath();
             agent.destination = startPoint.position;
-           /* if (link != null)
-            {
-                if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
-                if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
-                link = null;
-            }*/
+            /* if (link != null)
+             {
+                 if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
+                 if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
+                 link = null;
+             }*/
             inTrench = false;
             // agent.ResetPath();
         }
@@ -176,23 +187,23 @@ public class UnitMovement : MonoBehaviour
             }
         }
     }
-  /*  void EnterOffMeshLink()
-    {
-        OffMeshLinkData data = agent.currentOffMeshLinkData;
+    /*  void EnterOffMeshLink()
+      {
+          OffMeshLinkData data = agent.currentOffMeshLinkData;
 
-        //calculate the final point of the link
-        Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
+          //calculate the final point of the link
+          Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
 
-        //Move the agent to the end point
-        agent.transform.position = Vector3.MoveTowards(agent.transform.position, endPos, agent.speed * Time.deltaTime);
+          //Move the agent to the end point
+          agent.transform.position = Vector3.MoveTowards(agent.transform.position, endPos, agent.speed * Time.deltaTime);
 
-        //when the agent reach the end point you should tell it, and the agent will "exit" the link and work normally after that
-        if (agent.transform.position == endPos)
-        {
-            agent.CompleteOffMeshLink();
-        }
-    }
-*/
+          //when the agent reach the end point you should tell it, and the agent will "exit" the link and work normally after that
+          if (agent.transform.position == endPos)
+          {
+              agent.CompleteOffMeshLink();
+          }
+      }
+  */
     void OnTriggerStay(Collider col)
     {
         if (col.tag == "StopIfNoPath")

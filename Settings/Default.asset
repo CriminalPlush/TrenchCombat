@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dac620438cfc7948b535f0b6a435d49, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  gold: 100
+  gold: 500
   cooldown: 1
   goldPerTick: 2
