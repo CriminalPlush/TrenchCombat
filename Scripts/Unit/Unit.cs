@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
 
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviour //Core script for unit related scripts
 {
     public bool isEnemy = false;
     public float HP;

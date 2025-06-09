@@ -29,8 +29,6 @@ public class UnitMovement : MonoBehaviour
 
     // DebugOnly
     [SerializeField]
-    private bool isOnOffLink;
-    [SerializeField]
     private bool isImoveinImovout;
 
     void Start()
@@ -50,6 +48,7 @@ public class UnitMovement : MonoBehaviour
         }
         agent.destination = endPoint.position;
         StartCoroutine(FreezeFix());
+        StartCoroutine(SelectTrench());
     }
 
     // Update is called once per frame
@@ -57,18 +56,9 @@ public class UnitMovement : MonoBehaviour
     {
 
         //Debug//
-        isOnOffLink = agent.isOnOffMeshLink;
         isImoveinImovout = agent.isStopped;
 
 
-        if (agent.isOnOffMeshLink && !inTrench && !ignoreOffMeshLink)
-        {
-            if (commandQueue.Count > 0)
-            {
-                commandQueue = new List<string> { commandQueue[0] };
-            }
-            //EnterOffMeshLink();
-        }
         if (executeCommand
         && commandQueue.Count > 0
         && !(agent.isOnOffMeshLink && !inTrench)
@@ -89,22 +79,36 @@ public class UnitMovement : MonoBehaviour
             }
             commandQueue.RemoveAt(0);
         }
-        if (UA != null && UA.attackTarget != null && UA.IsTargetInRange() && !isOnOffLink)
+        if (UA != null && UA.attackTarget != null && UA.IsTargetInRange())
         {
             Stay();
         }
-        if ((UA == null || (UA != null && UA.attackTarget == null)) && !inTrench) //Check if there's no targets and if unit is not in trench                                                                   
+        FaceTarget();
+    }
+    public void Move()
+    {
+        agent.isStopped = false;
+        isMoving = true;
+        isRetreating = false;
+        agent.ResetPath();
+        agent.SetDestination(endPoint.position);
+        inTrench = false;
+    }
+    public IEnumerator SelectTrench()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if ((UA == null || (UA != null && UA.attackTarget == null)) && !inTrench)//Check if there's no targets and if unit is not in trench                                                           
         {
-            //   Debug.Log(TrenchFinder.FindTrenchByIndex(trenchIndex).HasAnyFreeSlot());
-            if (TrenchFinder.FindNext(transform.position, trenchIndex + (unit.isEnemy ? -1 : 1)) != null // if there's a trench
+
+            if (TrenchFinder.FindTrenchByIndex(trenchIndex) != null // checks if trench exists
             && !(TrenchFinder.FindTrenchByIndex(trenchIndex).playerOnly && unit.isEnemy)
             && !(TrenchFinder.FindTrenchByIndex(trenchIndex).enemyOnly && !unit.isEnemy) // if unit not excluded from trench by it's rules
-            && TrenchFinder.FindTrenchByIndex(trenchIndex).HasAnyFreeSlot() // if has any free slots
+            && TrenchFinder.FindTrenchByIndex(trenchIndex).HasAnyFreeSlot() // checks if there're free slots (only when close)
             )
             {
-                agent.SetDestination(TrenchFinder.FindNext(transform.position, trenchIndex) ?? Vector3.zero);
+                agent.SetDestination(TrenchFinder.FindNext(unit, trenchIndex) ?? Vector3.zero);
             }
-            else
+            else if (TrenchFinder.FindNext(unit, trenchIndex + (unit.isEnemy ? -1 : 1)) != null) // if there's next trench        )
             {
                 if (!unit.isEnemy)
                 {
@@ -119,55 +123,34 @@ public class UnitMovement : MonoBehaviour
         }
         else if ((UA == null || (UA != null && UA.attackTarget == null)) && inTrench)
         {
+
             agent.SetDestination(endPoint.position);
         }
-        FaceTarget();
-    }
-    public void Move()
-    {
-        if (!isOnOffLink || inTrench)
-        {
-            agent.isStopped = false;
-            isMoving = true;
-            isRetreating = false;
-            agent.ResetPath();
-            agent.SetDestination(endPoint.position);
-            /*   if (link != null)
-               {
-                   if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
-                   if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
-                   link = null;
-               }*/
-            inTrench = false;
-            // agent.ResetPath();
-        }
+        StartCoroutine(SelectTrench());
     }
     public void Retreat()
     {
-        if (!isOnOffLink || inTrench)
-        {
-            agent.isStopped = false;
-            isRetreating = true;
-            isMoving = false;
-            agent.ResetPath();
-            agent.destination = startPoint.position;
-            /* if (link != null)
-             {
-                 if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
-                 if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
-                 link = null;
-             }*/
-            inTrench = false;
-            // agent.ResetPath();
-        }
+        agent.isStopped = false;
+        isRetreating = true;
+        isMoving = false;
+        agent.ResetPath();
+        agent.destination = startPoint.position;
+        /* if (link != null)
+         {
+             if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
+             if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
+             link = null;
+         }*/
+        inTrench = false;
+        // agent.ResetPath();
+
     }
     public void Stay()
     {
-        if (!isOnOffLink || inTrench)
-        {
-            if (agent.hasPath)
-                agent.isStopped = true;
-        }
+
+        if (agent.hasPath)
+            agent.isStopped = true;
+
     }
 
     void FaceTarget()
@@ -184,44 +167,6 @@ public class UnitMovement : MonoBehaviour
                 Vector3 direction = agent.velocity;
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, direction.y, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-            }
-        }
-    }
-    /*  void EnterOffMeshLink()
-      {
-          OffMeshLinkData data = agent.currentOffMeshLinkData;
-
-          //calculate the final point of the link
-          Vector3 endPos = data.endPos + Vector3.up * agent.baseOffset;
-
-          //Move the agent to the end point
-          agent.transform.position = Vector3.MoveTowards(agent.transform.position, endPos, agent.speed * Time.deltaTime);
-
-          //when the agent reach the end point you should tell it, and the agent will "exit" the link and work normally after that
-          if (agent.transform.position == endPos)
-          {
-              agent.CompleteOffMeshLink();
-          }
-      }
-  */
-    void OnTriggerStay(Collider col)
-    {
-        if (col.tag == "StopIfNoPath")
-        {
-            if (col.transform.parent.GetComponent<Trench>().HasAnyFreeSlot() == false)
-            {
-                Stay();
-            }
-            else
-            {
-                if (isMoving && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1] != "Move")
-                {
-                    commandQueue.Add("Move");
-                }
-                else if (isRetreating && commandQueue.Count > 0 && commandQueue[commandQueue.Count - 1] != "Retreat")
-                {
-                    commandQueue.Add("Retreat");
-                }
             }
         }
     }

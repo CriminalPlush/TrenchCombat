@@ -5,15 +5,17 @@ public static class TrenchFinder
 {
 
     // Update is called once per frame
-    public static Vector3? FindNext(Vector3 unitPos, int index)
+    public static Vector3? FindNext(Unit unit, int index)
     {
+        Vector3 unitPos = unit.gameObject.transform.position;
         Vector3 destination = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
         foreach (TrenchSlot trenchSlot in GameObject.FindObjectsOfType<TrenchSlot>())
         {
             if (trenchSlot.unit == null)
             {
                 if ((Vector3.Distance(unitPos, destination) > Vector3.Distance(unitPos, trenchSlot.transform.position) || destination == null)
-                    && trenchSlot.gameObject.GetComponentInParent<Trench>().index == index)
+                    && (trenchSlot.gameObject.GetComponentInParent<Trench>().index == index))
+                //|| unit.isEnemy ? trenchSlot.transform.position.x > unitPos.x - 1f : trenchSlot.transform.position.x < unitPos.x + 1f))
                 {
                     destination = trenchSlot.transform.position;
                 }

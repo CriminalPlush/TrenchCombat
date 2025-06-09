@@ -23,7 +23,7 @@ public class TrenchSlot : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         Unit unitComponent;
-        if ((col.tag == "Unit" || col.tag == "Enemy") && unit == null)
+        if ((col.tag == "Unit" || col.tag == "Enemy") && unit == null && col.GetComponent<Unit>().UM.trenchIndex == trench.index)
         {
             unitComponent = col.GetComponent<Unit>();
             unit = col.gameObject;
@@ -37,11 +37,13 @@ public class TrenchSlot : MonoBehaviour
                 {
                     if (unitComponent.UM.isMoving)
                     {
-                        unitComponent.UM.commandQueue.Add("Move");
+                        unitComponent.UM.trenchIndex++;
+                        unitComponent.UM.Move();
                     }
                     else if (unitComponent.UM.isRetreating)
                     {
-                        unitComponent.UM.commandQueue.Add("Retreat");
+                        unitComponent.UM.trenchIndex--;
+                        unitComponent.UM.Retreat();
                     }
                 }
                 else if (transform.parent.GetComponent<Trench>().lockedIn == true)
