@@ -15,6 +15,7 @@ public class PlayerResources : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         gold = Convert.ToInt32(defaultSettings.gold * goldModifier);
         cooldown = defaultSettings.cooldown / goldProductionModifier;
         goldPerTick = defaultSettings.goldPerTick;
