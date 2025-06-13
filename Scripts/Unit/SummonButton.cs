@@ -22,30 +22,39 @@ public class SummonButton : MonoBehaviour
     void Start()
     {
         unitInfo = unit.GetComponent<UnitInfoSlot>().unitInfo;
-        image.texture = unitInfo.icon;
-        cooldown = unitInfo.spawnCooldown;
-        slider.maxValue = cooldown;
-        slider.value = thisCooldown;
-        priceText.text = Convert.ToString(unitInfo.price);
-        resources = FindObjectOfType<PlayerResources>();
+        PlayerData data = SaveSystem.Load();
+        if (data.FindUnitByName(unitInfo.name).level == 0)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            image.texture = unitInfo.icon;
+            cooldown = unitInfo.spawnCooldown;
+            slider.maxValue = cooldown;
+            slider.value = thisCooldown;
+            priceText.text = Convert.ToString(unitInfo.price);
+            resources = FindObjectOfType<PlayerResources>();
+        }
     }
     void Update()
     {
         slider.value = thisCooldown;
-        if(thisCooldown - Time.deltaTime < 0)
+        if (thisCooldown - Time.deltaTime < 0)
         {
             thisCooldown = 0;
         }
-        else if(thisCooldown > 0)
+        else if (thisCooldown > 0)
         {
             thisCooldown -= Time.deltaTime;
         }
     }
     public void OnClick()
     {
-        if(resources.gold >= unitInfo.price && thisCooldown == 0){
-        resources.gold -= unitInfo.price;
-        Spawn();
+        if (resources.gold >= unitInfo.price && thisCooldown == 0)
+        {
+            resources.gold -= unitInfo.price;
+            Spawn();
         }
 
     }

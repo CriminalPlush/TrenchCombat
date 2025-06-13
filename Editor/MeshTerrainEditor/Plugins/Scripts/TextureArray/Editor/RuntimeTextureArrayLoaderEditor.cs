@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MTE
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(RuntimeTextureArrayLoader))]
     public class RuntimeTextureArrayLoaderEditor : Editor
     {
@@ -23,4 +24,5 @@ namespace MTE
             }
         }
     }
+#endif
 }

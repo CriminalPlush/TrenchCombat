@@ -340,6 +340,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 825318310524954890, guid: 17a8b5bebfd3e5949997fb134926adcb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1886401203487153237, guid: 17a8b5bebfd3e5949997fb134926adcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.88
@@ -6356,6 +6360,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1594548352474170329, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: reward
+      value: 1700
+      objectReference: {fileID: 0}
     - target: {fileID: 7702020941534895236, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.8331485

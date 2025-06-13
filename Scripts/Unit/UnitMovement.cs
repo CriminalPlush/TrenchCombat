@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.AI.Navigation;
-using System;
-using TreeEditor;
 
 public class UnitMovement : MonoBehaviour
 {

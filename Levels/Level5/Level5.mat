@@ -52,11 +52,11 @@ Material:
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _Splat2:
-        m_Texture: {fileID: 2800000, guid: 4b11b6c8f86d6cc49ac51f5747748289, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2c7327bf8f59c064aa51eef57d2941ef, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _Splat3:
-        m_Texture: {fileID: 2800000, guid: 1a73eca1174e9364188d3e8e2396f87c, type: 3}
+        m_Texture: {fileID: 2800000, guid: f958863481eac0e408bdb6bc12acaca5, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

@@ -20,7 +20,7 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: 98d4d1b917812694bbdae7d881bfcdb6, type: 3}
   picture: {fileID: 2800000, guid: 2c51f08cf52789c459fb64b7c0ebdafa, type: 3}
   unitUpgradeTable:
-  - priceOfUpgrade: 500
+  - priceOfUpgrade: 1000
     damage: 0
     HP: 0
     preAttackCooldown: 0.2
@@ -33,5 +33,10 @@ MonoBehaviour:
   - priceOfUpgrade: 2000
     damage: 0.17
     HP: 22
+    preAttackCooldown: 0.2
+    postAttackCooldown: 0.2
+  - priceOfUpgrade: 2500
+    damage: 0.19
+    HP: 24
     preAttackCooldown: 0.2
     postAttackCooldown: 0.2
