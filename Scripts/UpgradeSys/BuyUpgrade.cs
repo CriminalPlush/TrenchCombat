@@ -17,7 +17,7 @@ public class BuyUpgrade : MonoBehaviour
         {
             PlayerData playerData = SaveSystem.Load();
             UnitData unitData = playerData.FindUnitByName(unitInfo.title);
-            if (unitData.level < unitInfo.unitUpgradeTable.Length - 1 && playerData.money >= unitInfo.unitUpgradeTable[unitData.level].priceOfUpgrade)
+            if (unitData.level < unitInfo.unitUpgradeTable.Length - 1 && playerData.money >= unitInfo.unitUpgradeTable[unitData.level + 1].priceOfUpgrade)
             {
                 playerData.money -= unitInfo.unitUpgradeTable[unitData.level + 1].priceOfUpgrade;
                 playerData.UpdateLevel(unitInfo.title);

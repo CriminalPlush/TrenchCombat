@@ -14,8 +14,10 @@ public class AIController : MonoBehaviour
     private float maxCommandCooldown = 25f;
     [SerializeField]
     private GameObject[] units;
+    private GetOutCommand[] getOutCommand;
     void Start()
     {
+        getOutCommand = FindObjectsOfType<GetOutCommand>();
         StartCoroutine(Spawn());
         StartCoroutine(Command());
     }
@@ -32,13 +34,9 @@ public class AIController : MonoBehaviour
     private IEnumerator Command()
     {
         yield return new WaitForSeconds(Random.Range(minCommandCooldown, maxCommandCooldown));
-        UnitMovement[] units = FindObjectsOfType<UnitMovement>();
-        foreach (UnitMovement x in units)
+        foreach (var command in getOutCommand)
         {
-            if (x.gameObject.tag == "Enemy")
-            {
-                x.commandQueue.Add("Move");
-            }
+            command.GetOutEnemy();
         }
         StartCoroutine(Command());
     }
