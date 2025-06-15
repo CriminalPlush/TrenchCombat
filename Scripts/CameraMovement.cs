@@ -5,14 +5,17 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float speed;
-    public float limitationLeft;
-    public float limitationRight;
+    private float limitationLeft;
+    private float limitationRight;
     private Vector2 startPos;
     private float swipeSpeed = 0.009f;
     private Vector2 lastTouchPosition;
 
     void Start()
     {
+        limitationLeft = GameObject.FindGameObjectWithTag("StartPoint").transform.position.x + 11.5f;
+        limitationRight = GameObject.FindGameObjectWithTag("EndPoint").transform.position.x - 11.5f;
+
     }
 
     // Update is called once per frame

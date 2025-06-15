@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour
 {
@@ -48,8 +50,12 @@ public class Win : MonoBehaviour
             if (unit.isEnemy)
             {
                 PlayerData data = SaveSystem.Load();
-                data.money += reward;
-                SaveSystem.Save(data);
+                if (data.levelsPassed.Contains(SceneManager.GetActiveScene().name) == false)
+                {
+                    data.levelsPassed.Add(SceneManager.GetActiveScene().name);
+                    data.money += reward;
+                    SaveSystem.Save(data);
+                }
             }
             Time.timeScale = 0;
         }

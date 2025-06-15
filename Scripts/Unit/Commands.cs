@@ -19,7 +19,7 @@ public class Commands : MonoBehaviour
         TrenchSlot[] trenchSlots = FindObjectsOfType<TrenchSlot>();
         foreach (UnitMovement x in units)
         {
-            if (x.gameObject.tag == "Unit")
+            if (x.gameObject.GetComponent<Unit>() != null)
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {

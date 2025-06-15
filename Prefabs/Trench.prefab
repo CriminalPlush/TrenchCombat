@@ -731,7 +731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6f614dff96bd94982ee99f5ade4860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Trench: {fileID: 6097433179968706144}
+  playerTrench: {fileID: 6097433179968706144}
+  enemyTrench: {fileID: 6097433179968706144}
 --- !u!1 &1385959029793819569
 GameObject:
   m_ObjectHideFlags: 0

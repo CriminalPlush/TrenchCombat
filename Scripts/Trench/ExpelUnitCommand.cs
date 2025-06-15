@@ -36,7 +36,7 @@ public class ExpelUnitCommand : MonoBehaviour
         {
             if (x.GetComponent<TrenchSlot>() != null)
             {
-                if (x.GetComponent<TrenchSlot>().unit != null && x.GetComponent<TrenchSlot>().unit.tag == "Unit")
+                if (x.GetComponent<TrenchSlot>().unit != null && x.GetComponent<TrenchSlot>().unit.GetComponent<Unit>().isEnemy == false)
                 {
                     units.Add(x.GetComponent<TrenchSlot>().unit);
                 }

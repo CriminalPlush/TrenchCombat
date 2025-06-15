@@ -23,7 +23,7 @@ public class TrenchSlot : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         Unit unitComponent;
-        if ((col.tag == "Unit" || col.tag == "Enemy") && unit == null && col.GetComponent<Unit>().UM.trenchIndex == trench.index)
+        if ((col.GetComponent<Unit>() != null) && unit == null && col.GetComponent<Unit>().UM.trenchIndex == trench.index)
         {
             unitComponent = col.GetComponent<Unit>();
             unit = col.gameObject;

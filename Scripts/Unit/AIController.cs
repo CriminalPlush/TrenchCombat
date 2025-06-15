@@ -27,7 +27,6 @@ public class AIController : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(minSpawnCooldown, maxSpawnCooldown));
         GameObject unit = Instantiate(units[Random.Range(0, units.Length)], GameObject.FindGameObjectsWithTag("EnemySpawner")[0].transform.position, Quaternion.identity);
-        unit.tag = "Enemy";
         unit.GetComponent<Unit>().isEnemy = true;
         StartCoroutine(Spawn());
     }
@@ -37,7 +36,9 @@ public class AIController : MonoBehaviour
         foreach (var command in getOutCommand)
         {
             command.GetOutEnemy();
+            Debug.Log("Sigmus");
         }
+        Debug.Log("Something Happened!");
         StartCoroutine(Command());
     }
 }

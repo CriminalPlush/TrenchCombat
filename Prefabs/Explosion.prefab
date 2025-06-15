@@ -5008,7 +5008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoDestroyTime: 1
-  damage: 4
+  damage: 2.5
   crater: {fileID: 8695764147812974250, guid: 4503579c3d8f3a74a93fe2cdc0ce894f, type: 3}
 --- !u!135 &1466888643011151034
 SphereCollider:
