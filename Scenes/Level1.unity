@@ -1876,6 +1876,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: maxCommandCooldown
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: minCommandCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
       propertyPath: units.Array.data[0]
       value: 
       objectReference: {fileID: 6043363312791449604, guid: 69b9bde8c5ef31a428db61c43753f9a5, type: 3}
@@ -3547,8 +3555,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  limitationLeft: 6
-  limitationRight: 65
 --- !u!4 &964873040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3566038563041779112, guid: cd828173d6faf2f46b40c5793235df5c, type: 3}

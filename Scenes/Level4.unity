@@ -2275,8 +2275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  limitationLeft: 10.5
-  limitationRight: 63
 --- !u!81 &747904263
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2345,7 +2343,7 @@ Transform:
   m_GameObject: {fileID: 747904261}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23282094, y: -0, z: -0, w: 0.97251964}
-  m_LocalPosition: {x: 10.700001, y: 13.3, z: -23.74}
+  m_LocalPosition: {x: 11.91, y: 13.3, z: -23.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6363,6 +6361,14 @@ PrefabInstance:
     - target: {fileID: 1594548352474170329, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
       propertyPath: reward
       value: 1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: maxCommandCooldown
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: minCommandCooldown
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7702020941534895236, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -42,6 +43,7 @@ public class UnitAttack : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //Boosts attack range when in trench
         if (rangeCollider != null)
         {
             if (UM != null && UM.inTrench)
@@ -55,7 +57,9 @@ public class UnitAttack : MonoBehaviour
                 rangeCollider.transform.localScale = rangeBaseScale;
                 attackDistance = baseAttackDistance;
             }
-        }
+        } 
+
+        //Boosts damage when in trench or ally officer unit nearby
         if (unit != null)
         {
             damage = baseDamage * (unit.isTrenchBoosted ? 1.2f : 1f) * (unit.isOfficerBoosted ? 1.5f : 1f);
@@ -64,14 +68,19 @@ public class UnitAttack : MonoBehaviour
         {
             damage = baseDamage;
         }
+
+        //Attacks if there's a target in accessible range
         if (attackTarget != null && IsTargetInRange())
         {
             StartCoroutine(Attack(damage));
         }
+        //If there's a target but it's too far unit follows it
         else if (UM != null && attackTarget != null)
         {
             UM.agent.SetDestination(attackTarget.transform.position);
         }
+
+        //Else it just moves forward if not in trench
         else if (UM != null)
         {
             if (UM.isMoving && UM.agent.isStopped && !UM.inTrench)
@@ -83,6 +92,8 @@ public class UnitAttack : MonoBehaviour
                 UM.Retreat();
             }
         }
+
+        // looks at the target if it exists
         if (attackTarget != null)
         {
             Vector3 attackTargetPosition = new Vector3(attackTarget.transform.position.x, transform.position.y, attackTarget.transform.position.z);
@@ -105,7 +116,7 @@ public class UnitAttack : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-        // Debug.Log(gameObject.name + " === " + col.name);
+        // Constantly searches for targets if there's no currently
         Unit other = col.GetComponent<Unit>();
         if (col.GetComponent<Unit>() != null && col.GetComponent<Unit>().isDying == false)
         {
@@ -132,20 +143,33 @@ public class UnitAttack : MonoBehaviour
         {
             isAttacking = true;
             yield return new WaitForSeconds(preAttackCooldown);
+
+            //Something sound related
             if (attackEffect != null)
             {
                 attackEffect.Play();
             }
             if (attackSound.Length != 0)
             {
-                int x = Random.Range(0, attackSound.Length);
+                int x = UnityEngine.Random.Range(0, attackSound.Length);
                 if (!(attackSound[x].loop && attackSound[x].isPlaying))
                 {
                     attackSound[x].Play();
                 }
 
             }
-            attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
+
+            try
+            {
+                attackTarget.GetComponent<Unit>().HP -= damage - (damage * attackTarget.GetComponent<Unit>().defence);
+            }
+            catch (Exception)
+            {
+                Debug.Log(attackTarget);
+                Debug.Log(gameObject);
+            }
+
+            // Stay in place and attack if there's an active enemy
             if (attackTarget != null && IsTargetInRange() && attackTarget.GetComponent<Unit>().HP > 0)
             {
                 if (UM != null)

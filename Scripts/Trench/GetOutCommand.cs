@@ -17,37 +17,33 @@ public class GetOutCommand : MonoBehaviour
     // Update is called once per frame
     public void OnClick()
     {
-        foreach (Transform x in playerTrench.transform)
+        GetOut(false);
+    }
+    public void GetOutEnemy()
+    {
+        GetOut(true);
+    }
+    public void GetOut(bool isEnemy)
+    {
+        foreach (Transform x in isEnemy ? enemyTrench.transform : playerTrench.transform)
         {
             if (x.gameObject.GetComponent<TrenchSlot>() != null && x.gameObject.GetComponent<TrenchSlot>().unit != null)
             {
                 TrenchSlot slot = x.gameObject.GetComponent<TrenchSlot>();
-                if (slot.unit.GetComponent<UnitMovement>() != null && slot.unit.GetComponent<Unit>().isEnemy == false)
+                if (slot.unit.GetComponent<UnitMovement>() != null && slot.unit.GetComponent<Unit>().isEnemy == isEnemy ? true : false)
                 {
                     UnitMovement UM = slot.unit.GetComponent<UnitMovement>();
                     UM.Move();
                     if (UM.trenchIndex == playerTrench.GetComponent<Trench>().index) // prevents increasing index more than once (I guess)
                     {
-                        x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().trenchIndex++;
-                    }
-                }
-            }
-        }
-    }
-    public void GetOutEnemy()
-    {
-        foreach (Transform x in enemyTrench.transform)
-        {
-            if (x.gameObject.GetComponent<TrenchSlot>() != null && x.gameObject.GetComponent<TrenchSlot>().unit != null)
-            {
-                TrenchSlot slot = x.gameObject.GetComponent<TrenchSlot>();
-                if (slot.unit.GetComponent<UnitMovement>() != null && slot.unit.GetComponent<Unit>().isEnemy == true)
-                {
-                    UnitMovement UM = slot.unit.GetComponent<UnitMovement>();
-                    UM.Move();
-                    if (UM.trenchIndex == enemyTrench.GetComponent<Trench>().index) // prevents increasing index more than once (I guess)
-                    {
-                        x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().trenchIndex--;
+                        if (isEnemy)
+                        {
+                            x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().trenchIndex--;
+                        }
+                        else
+                        {
+                            x.gameObject.GetComponent<TrenchSlot>().unit.GetComponent<UnitMovement>().trenchIndex++;
+                        }
                     }
                 }
             }

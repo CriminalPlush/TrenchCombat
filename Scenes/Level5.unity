@@ -875,8 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  limitationLeft: 13.7
-  limitationRight: 61
 --- !u!81 &747904263
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4529,7 +4527,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.096666664
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 93004747cfafafe4b95e1f4947900af3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 315ffe920dd72fb4186bd8b491d52d42, type: 2}
   m_BuildHeightMesh: 1
 --- !u!4 &2107969417
 Transform:
@@ -4707,6 +4705,18 @@ PrefabInstance:
     - target: {fileID: 1594548352474170329, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
       propertyPath: reward
       value: 2100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: maxSpawnCooldown
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: maxCommandCooldown
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197955161591455451, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
+      propertyPath: minCommandCooldown
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7702020941534895236, guid: 82cc3955db051f643a943d24bafc4b95, type: 3}
       propertyPath: m_LocalPosition.x
