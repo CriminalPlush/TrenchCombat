@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Flamethrower
   m_EditorClassIdentifier: 
   title: Flamethrower
-  description: "\u041E\u043D \u0438\u0434\u0451\u0442 \u0438 \u0441\u0436\u0438\u0433\u0430\u0435\u0442.
-    \u0418\u0434\u0451\u0442 \u0438 \u0441\u0436\u0438\u0433\u0430\u0435\u0442."
-  price: 60
+  description: "\u041E\u043D \u0438\u0434\u0451\u0442 \u0438 \u0441\u0436\u0438\u0433\u0430\u0435\u0442,
+    \u0438\u0434\u0451\u0442 \u0438 \u0441\u0436\u0438\u0433\u0430\u0435\u0442"
+  description_EN: He marches and burns, marches and burns
+  price: 50
   spawnCooldown: 1
   icon: {fileID: 2800000, guid: 98d4d1b917812694bbdae7d881bfcdb6, type: 3}
   picture: {fileID: 2800000, guid: 2c51f08cf52789c459fb64b7c0ebdafa, type: 3}

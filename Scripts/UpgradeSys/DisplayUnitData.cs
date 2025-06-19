@@ -12,8 +12,18 @@ public class DisplayUnitData : MonoBehaviour
         PlayerData playerData = SaveSystem.Load();
 
         image.texture = unitInfo.picture;
-        description.text = unitInfo.description;
-
+        switch (PlayerPrefs.GetString("language", "EN"))
+        {
+            case "EN":
+                description.text = unitInfo.description_EN;
+                break;
+            case "RU":
+                description.text = unitInfo.description;
+                break;
+            default:
+                description.text = unitInfo.description_EN;
+                break;
+        }
         UnitData unitData = playerData.FindUnitByName(unitInfo.title);
         Debug.Log(unitData);
         Debug.Log(unitInfo.unitUpgradeTable);

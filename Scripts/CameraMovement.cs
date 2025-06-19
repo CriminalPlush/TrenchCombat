@@ -13,8 +13,8 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        limitationLeft = GameObject.FindGameObjectWithTag("StartPoint").transform.position.x + 11.5f;
-        limitationRight = GameObject.FindGameObjectWithTag("EndPoint").transform.position.x - 11.5f;
+        limitationLeft = GameObject.FindGameObjectWithTag("StartPoint").transform.position.x + 11.5f * (Screen.width / 1920);
+        limitationRight = GameObject.FindGameObjectWithTag("EndPoint").transform.position.x - 11.5f  * (Screen.width / 1920);;
 
     }
 
