@@ -21,13 +21,10 @@ public class Win : MonoBehaviour
         reward = FindObjectOfType<LevelData>().reward;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (unit.HP <= 0)
         {
-            //Mathf.MoveTowards(Time.timeScale, 0, 1f * Time.deltaTime);
-            //winPanel.SetActive(true);
             Victory();
         }
     }

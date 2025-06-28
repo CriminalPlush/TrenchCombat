@@ -31,7 +31,6 @@ public class TrenchSlot : MonoBehaviour
             {
                 Debug.Log("Checkit checkit");
                 unitComponent.UM.inTrench = true;
-                //agent.ResetPath();
                 unit.GetComponent<NavMeshAgent>().isStopped = true;
                 if (transform.parent.GetComponent<Trench>().lockedIn == false && !unitComponent.isEnemy)
                 {

@@ -21,7 +21,6 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // string clipName = animator.GetCurrentAnimatorStateInfo(0).IsName("Fire");
         if (!unitIsDyeing)
         {
             if (unit.HP <= 0)

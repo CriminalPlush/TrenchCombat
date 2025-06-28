@@ -15,7 +15,6 @@ public static class TrenchFinder
             {
                 if ((Vector3.Distance(unitPos, destination) > Vector3.Distance(unitPos, trenchSlot.transform.position) || destination == null)
                     && (trenchSlot.gameObject.GetComponentInParent<Trench>().index == index))
-                //|| unit.isEnemy ? trenchSlot.transform.position.x > unitPos.x - 1f : trenchSlot.transform.position.x < unitPos.x + 1f))
                 {
                     destination = trenchSlot.transform.position;
                 }

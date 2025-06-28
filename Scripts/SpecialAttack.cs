@@ -6,7 +6,7 @@ public class SpecialAttack : MonoBehaviour
 {
     [SerializeField] private GameObject area;
     [SerializeField] private GameObject fireShower;
-    public float cooldown = 30; // used by SpecialAttackButton
+    public float cooldown = 30;
     private GameObject areaInstance;
     void Start()
     {

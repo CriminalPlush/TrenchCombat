@@ -20,7 +20,6 @@ public class HPDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(unit.HP + " " + maxHp);
         if (unit.HP == maxHp)
         {
             slider.gameObject.SetActive(false);

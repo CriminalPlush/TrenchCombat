@@ -35,13 +35,6 @@ public class Commands : MonoBehaviour
                 }
             }
         }
-        /*  foreach(TrenchSlot y in trenchSlots)
-          {
-              if(Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Z))
-              {
-                  y.transform.GetComponents<NavMeshLink>()[0].enabled = true;
-                  y.transform.GetComponents<NavMeshLink>()[1].enabled = true;
-              }
-          }*/
+        
     }
 }

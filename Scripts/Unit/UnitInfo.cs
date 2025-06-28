@@ -23,10 +23,4 @@ public class UnitUpgradeInfo
     public int HP;
     public float preAttackCooldown;
     public float postAttackCooldown;
-    /* public UnitUpgradeInfo(int _priceOfUpgrade, float _damage, int _HP)
-     {
-         priceOfUpgrade = _priceOfUpgrade;
-         damage = _damage;
-         HP = _HP;
-     }*/
 }

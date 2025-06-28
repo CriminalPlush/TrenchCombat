@@ -132,14 +132,7 @@ public class UnitMovement : MonoBehaviour
         isMoving = false;
         agent.ResetPath();
         agent.destination = startPoint.position;
-        /* if (link != null)
-         {
-             if (link.GetComponents<NavMeshLink>().Length >= 1) link.GetComponents<NavMeshLink>()[0].enabled = true;
-             if (link.GetComponents<NavMeshLink>().Length >= 2) link.GetComponents<NavMeshLink>()[1].enabled = true;
-             link = null;
-         }*/
         inTrench = false;
-        // agent.ResetPath();
 
     }
     public void Stay()

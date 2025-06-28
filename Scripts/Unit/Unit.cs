@@ -42,12 +42,10 @@ public class Unit : MonoBehaviour //Core script for unit related scripts
             if (UM.inTrench)
             {
                 isTrenchBoosted = true;
-                //defence = baseDefence + 0.1f;
             }
             else
             {
                 isTrenchBoosted = false;
-                //defence = baseDefence;
             }
         }
         defence = baseDefence + (isTrenchBoosted ? 0.1f : 0) + (isOfficerBoosted ? 0.2f : 0);
@@ -65,10 +63,6 @@ public class Unit : MonoBehaviour //Core script for unit related scripts
             {
                 FindObjectOfType<PlayerResources>().gold += unitInfo.price / 2;
             }
-          /*  if (UM != null && UM.inTrench)
-            {
-                UM.link.GetComponent<TrenchSlot>().unit = null;
-            }*/
             if (GetComponent<UnitBoost>() == true)
             {
                 foreach (Unit x in GetComponent<UnitBoost>().unitsBoosted)
