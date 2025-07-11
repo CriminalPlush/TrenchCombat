@@ -18,7 +18,7 @@ public class Explosion : MonoBehaviour
     {
         if (col.tag == "Ground")
         {
-            SpawnCrater();
+            //SpawnCrater(); works weirdly on WebGL
         }
         if (col.GetComponent<Unit>() != null)
         {

@@ -50,4 +50,10 @@ public class PlayerData
             }
         }
     }
+    public PlayerData()
+    {
+        money = 0;
+        unitsList = new List<UnitData> { new UnitData("Soldier", 1), new UnitData("Base", 1) };
+        levelsPassed = new List<string>();
+    }
 }

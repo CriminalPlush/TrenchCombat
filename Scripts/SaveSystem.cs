@@ -2,35 +2,56 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+using YG;
 public static class SaveSystem
 {
     private static string saveFilePath = Path.Combine(Application.persistentDataPath, "playerData.json");
     public static void Save(PlayerData playerData)
     {
-        string json = JsonUtility.ToJson(playerData);
-        File.WriteAllText(saveFilePath, json);
-    }
-    public static PlayerData Load()
-    {
-        Debug.Log(Path.Combine(Application.persistentDataPath, "playerData.json"));
-        PlayerData data;
-        if (File.Exists(saveFilePath))
+        if (YG2.isSDKEnabled)
         {
-            string json = File.ReadAllText(saveFilePath);
-            data = JsonUtility.FromJson<PlayerData>(json);
+            YG2.saves.playerData = playerData;
+            YG2.SaveProgress();
         }
         else
         {
-            data = new PlayerData();
+            string json = JsonUtility.ToJson(playerData);
+            File.WriteAllText(saveFilePath, json);
         }
-        Debug.Log(data.unitsList == null);
-        if (data.unitsList == null || data.unitsList.Count == 0)
+    }
+    public static PlayerData Load()
+    {
+        Debug.Log(YG2.isSDKEnabled);
+        if (YG2.isSDKEnabled)
         {
-            data.unitsList = new List<UnitData> { new UnitData("Soldier", 1) , new UnitData("Base", 1)};
-            Save(data);
+            if (YG2.saves.playerData == null)
+            {
+                YG2.saves.playerData = new PlayerData();
+                YG2.SaveProgress();
+            }
+            Debug.Log(YG2.saves.playerData.money);
+            return YG2.saves.playerData;
         }
-        return data;
-
+        else
+        {
+            Debug.Log(Path.Combine(Application.persistentDataPath, "playerData.json"));
+            PlayerData data;
+            if (File.Exists(saveFilePath))
+            {
+                string json = File.ReadAllText(saveFilePath);
+                data = JsonUtility.FromJson<PlayerData>(json);
+            }
+            else
+            {
+                data = new PlayerData();
+            }
+            Debug.Log(data.unitsList == null);
+            if (data.unitsList == null || data.unitsList.Count == 0)
+            {
+                data = new PlayerData();
+                Save(data);
+            }
+            return data;
+        }
     }
 }

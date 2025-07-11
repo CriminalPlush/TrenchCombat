@@ -4,6 +4,7 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using YG;
 
 public class Localization : MonoBehaviour
 {
@@ -20,17 +21,24 @@ public class Localization : MonoBehaviour
         {
             text = GetComponent<TMP_Text>();
         }
-        switch (PlayerPrefs.GetString("language", "EN"))
+        if (YG2.isSDKEnabled)
+        {
+            switch (YG2.lang)
             {
-                case "EN":
-                    text.text = english;
-                    break;
-                case "RU":
+                case "ru":
                     text.text = russian;
+                    break;
+                case "en":
+                    text.text = english;
                     break;
                 default:
                     text.text = english;
                     break;
             }
+        }
+        else
+        {
+            text.text = russian;
+        }
     }
 }

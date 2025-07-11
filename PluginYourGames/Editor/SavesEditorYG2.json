@@ -1,0 +1,40 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 7,
+    "playerData": {
+        "money": 11300,
+        "unitsList": [
+            {
+                "title": "Soldier",
+                "level": 1
+            },
+            {
+                "title": "Base",
+                "level": 1
+            },
+            {
+                "title": "Flamethrower",
+                "level": 0
+            },
+            {
+                "title": "Sniper",
+                "level": 0
+            },
+            {
+                "title": "Officer",
+                "level": 0
+            }
+        ],
+        "unitsSelected": [],
+        "levelsPassed": [
+            "Level1"
+        ]
+    }
+}

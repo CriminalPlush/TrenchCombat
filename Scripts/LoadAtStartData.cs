@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using YG;
 
 public class LoadAtStartData : MonoBehaviour
 {

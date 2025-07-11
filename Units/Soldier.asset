@@ -41,3 +41,8 @@ MonoBehaviour:
     HP: 14
     preAttackCooldown: 0.6
     postAttackCooldown: 0.6
+  - priceOfUpgrade: 2500
+    damage: 1.5
+    HP: 17
+    preAttackCooldown: 0.6
+    postAttackCooldown: 0.6

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class DisplayUnitData : MonoBehaviour
 {
@@ -12,17 +13,24 @@ public class DisplayUnitData : MonoBehaviour
         PlayerData playerData = SaveSystem.Load();
 
         image.texture = unitInfo.picture;
-        switch (PlayerPrefs.GetString("language", "EN"))
+        if (YG2.isSDKEnabled)
         {
-            case "EN":
-                description.text = unitInfo.description_EN;
-                break;
-            case "RU":
-                description.text = unitInfo.description;
-                break;
-            default:
-                description.text = unitInfo.description_EN;
-                break;
+            switch (YG2.lang)
+            {
+                case "en":
+                    description.text = unitInfo.description_EN;
+                    break;
+                case "ru":
+                    description.text = unitInfo.description;
+                    break;
+                default:
+                    description.text = unitInfo.description_EN;
+                    break;
+            }
+        }
+        else
+        {
+            description.text = unitInfo.description_EN;
         }
         UnitData unitData = playerData.FindUnitByName(unitInfo.title);
         Debug.Log(unitData);
